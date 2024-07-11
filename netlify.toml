@@ -1,0 +1,25 @@
+[build]
+  command = "npm run build:all"
+  publish = "build"
+
+# Build the dashboard
+[[build.context.dashboard]]
+  base = "dashboard"
+  command = "npm run build"
+  publish = "build"
+
+# Build the frontend
+[[build.context.frontend]]
+  base = "frontend"
+  command = "npm run build"
+  publish = "build"
+
+# Custom build command
+[context.production.environment]
+  NODE_ENV = "production"
+  # Any other environment variables needed for the build
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
