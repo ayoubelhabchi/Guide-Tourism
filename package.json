@@ -1,8 +1,10 @@
 {
     "scripts": {
-      "build:all": "npm run build:dashboard && npm run build:frontend",
-      "build:dashboard": "cd dashboard && npm install && npm run build",
-      "build:frontend": "cd frontend && npm install && npm run build"
+        "build:all": "npm run build:dashboard && npm run build:frontend",
+        "build:dashboard": "cd dashboard && npm install && npm run build",
+        "build:frontend": "cd frontend && npm install && npm run build"
+    },
+    "devDependencies": {
+        "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
     }
-  }
-  
+}
