@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 
-import imgheader from'../assets/landscapes.jpeg'
+import imgheader from'../assets/landscapes.jpg'
 
 
 import ProgressSteps from '.././components/steps/BookingSteps';
@@ -55,11 +55,9 @@ const Landscapes = () => {
       <div className="App">
         <div className="relative">
 
-          <div className="text-white h-screen flex items-center justify-center" style={bgheadertour}>
+          <div className="text-white lg:h- bg-center h-96 flex items-center justify-center" style={bgheadertour}>
 
-            <div className=" max-w-xl">
-              <h1 className="lg:text-9xl text-7xl text-nowrap font-year text-center capitalize">Landscapes</h1>
-            </div>
+              <h1 className="lg:text-[180px] text-7xl text-nowrap font-year capitalize">Landscapes</h1>
           </div>
           <div className="  flex justify-center  ">
 
