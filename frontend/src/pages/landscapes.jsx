@@ -37,7 +37,7 @@ const Landscapes = () => {
   const renderStep = (step, nextStep, prevStep, prev2Step,prev3Step) => {
     switch (step) {
       case 1:
-        return <Step1 nextStep={nextStep}  />;
+        return <Step1 nextStep={nextStep} prevStep={prevStep}  />;
       case 2:
         return <Step2 nextStep={nextStep} prevStep={prevStep} />;
       case 3:
@@ -62,7 +62,7 @@ const Landscapes = () => {
           <div className="  flex justify-center  ">
 
 
-            <div className=" shadow-2xl w-[900px]  max-h-[950px]  bg-white relative mt-6  -top-[50px] ">
+            <div className=" shadow-2xl max-w-[900px]  max-h-[950px]  bg-white relative mt-6  -top-[50px] ">
 
               <ProgressSteps steps={steps} renderStep={renderStep} />
 

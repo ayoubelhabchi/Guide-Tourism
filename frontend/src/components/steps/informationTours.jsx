@@ -8,6 +8,7 @@ import { fetchCardToursById } from '../../features/Slices/tourSlice';
 import { useState, useEffect } from 'react';
 import souk2 from '../../assets/souk2.jpg';
 import spice6 from '../../assets/spice6.jpg';
+import { Link } from "react-router-dom";
 
 const Step1 = ({ nextStep }) => {
     const dispatch = useDispatch();
@@ -73,6 +74,18 @@ const Step1 = ({ nextStep }) => {
                             </div>
                         </div>
                     </div>
+                <Link to="/tour">
+                <div className="">
+                    <button
+                            className="bg-gray/30 px-6 h-10 text-white rounded-full hover:bg-white hover:text-gray border"
+                            >
+                            
+                            Back
+                        </button>
+
+                </div>
+                            </Link>
+
                 </div>
             </div>
         </>
