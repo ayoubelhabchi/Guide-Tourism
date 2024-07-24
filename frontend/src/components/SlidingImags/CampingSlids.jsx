@@ -39,7 +39,7 @@ function CampingSlids() {
     <div className='h-screen w-full m-auto relative'>
       <div
         style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
-        className='w-full h-full bg-center bg-cover duration-500'
+        className='w-full lg:h-full h-[300px] bg-center bg-cover duration-500'
       ></div>
 
       <div className='flex top-4 justify-center -mt-[140px]'>

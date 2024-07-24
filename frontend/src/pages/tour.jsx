@@ -81,8 +81,8 @@ const Tour = () => {
             </div>
             <div className="flex justify-center">
                 <div className="shadow-2xl lg:w-4/6 relative mt-6 top-[-50px] bg-white p-2">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 relative gap-2 lg:gap-4">
-                        <div className="grid grid-cols-3 lg:grid-cols-2 gap-2 lg:gap-4 z-30">
+                    <div className="grid grid-cols-2 relative gap-2 lg:gap-4">
+                        <div className="grid grid-cols-2 gap-2 lg:gap-4 z-30">
                             {loading ? (
                                 <div className="flex absolute items-center justify-center w-1/2 h-full">
                                     <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray"></div>
@@ -92,13 +92,13 @@ const Tour = () => {
                                     <Link to="/Landscapes" key={index} style={{ display: 'block' }}>
                                         <div onClick={() => handleTourId(tour._id)} className='relative bg-white p-1.5 h-max w-full hover:scale-105 rounded-xl hover:shadow-2xl shadow-md duration-100'>
                                             <div className='relative'>
-                                                <img src={tour.image} alt="Card" className='lg:h-[260px] h-[180px] w-full rounded-2xl object-cover' />
+                                                <img src={tour.image} alt="Card" className='lg:h-[260px] h-[160px] w-full rounded-2xl object-cover' />
                                                 <div className="absolute bottom-0 w-full h-[100px] bg-gradient-to-t via-black/50 from-black/60 to-transparent rounded-b-[15px]"></div>
                                                 <div className="flex absolute top-2 right-1 gap-1 text-white px-0.5 bg-black rounded-full">
                                                     <div className='flex items-center'>
                                                         <IoPricetagOutline size={15} />
                                                     </div>
-                                                    <h2 className=" text-sm lg:text-lg">{tour.price} $</h2>
+                                                    <h2 className=" text-sm lg:text-lg">{tour.price} DH</h2>
                                                 </div>
                                                 <div className='absolute bottom-0 z-10 p-1 right-0 w-full  rounded-b-2xl'>
                                                     <div className='flex flex-col'>
@@ -135,33 +135,33 @@ const Tour = () => {
                             )}
                         </div>
 
-                        <div className="w-full h-max bg-stone-100 rounded-lg p-2 lg:p-4 hidden lg:block">
+                        <div className="w-full h-max bg-stone-100 rounded-lg p-1 lg:p-4">
                             <div className="lg:text-3xl text-xl font-semibold pb-2 text-primary justify-center flex">
                                 <h1>Plan your tour</h1>
                             </div>
-                            <p className="text-center">Ex optio sequi et quos praesentium in nostrum labore nam rerum iusto aut magni nesciunt? Quo quidem neque iste expedita est dolo.</p>
-                            <div className="flex flex-col gap-4">
+                            <p className=" text-center text-lg">Are you looking for something specific ? Then, write your thoughts</p>
+                            <div className="flex flex-col lg:items-stretch justify-center items-center gap-2 lg:gap-4">
                                 <div className="gap-1"></div>
                                 <div className="relative">
                                     <input onChange={(e) => {
                                             setSearchParams({ destination: e.target.value });
                                         }} 
-                                        value={searchTerm} type="text" placeholder='Search Tour' className="w-full text-center border-none h-12 rounded-full bg-white" />
+                                        value={searchTerm} type="text" placeholder='Search Tour' className="w- lg:w-full text-center border-none h-9 lg:h-12 rounded-full bg-white" />
                                     <IoSearch size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2 " />
                                 </div>
                                 <div className="relative">
                                     <input onChange={(e) => setSearchCategory(e.target.value)} 
-                                        value={searchCategory}  type="text" placeholder='Category' className="w-full h-12 rounded-full text-center border-none bg-white" />
+                                        value={searchCategory}  type="text" placeholder='Category' className="w- lg:w-full h-9 lg:h-12 rounded-full text-center border-none bg-white" />
                                     <MdOutlineWhereToVote size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2 " />
                                 </div>
                                 <div className="relative">
                                     <input onChange={(e) => setSearchDuration(e.target.value)} 
-                                        value={searchDuration}  type="text" placeholder='Duration (in hours)' className="w-full h-12 rounded-full text-center border-none bg-white" />
+                                        value={searchDuration}  type="text" placeholder='Duration' className="w- lg:w-full h-9 lg:h-12 rounded-full text-center border-none bg-white" />
                                     <TbCalendarEvent size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2" />
                                 </div>
                                 <h2 className="uppercase font-bold">Filter by price</h2>
                                 <input onChange={(e) => setSearchPrice(e.target.value)} 
-                                    value={searchPrice}  type="text" placeholder='Enter Price' className="w-full h-8 rounded-full text-center border-none bg-white" />
+                                    value={searchPrice}  type="text" placeholder='Enter Price' className="w- lg:w-full h-6 lg:h-8 rounded-full text-center border-none bg-white" />
                                 <h4 className="text-neutral-600 capitalize">ex: 200-1000 MAD </h4>
                             </div>
                         </div>

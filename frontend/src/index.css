@@ -7,7 +7,7 @@
 
 /* Define scrollbar width and color */
 :root {
-    --scrollbar-width: 14px;
+    --scrollbar-width: 10px;
     --scrollbar-color: #6499E9;
   }
   
