@@ -2,6 +2,7 @@
 import  { useEffect } from 'react';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
+import { Link } from 'react-router-dom';
 
 
 
@@ -12,27 +13,29 @@ const About = () => {
   }, []);
 
   return (
-    <div className="container mx-auto px-1 pt-15">
-      <section className="flex flex-col md:flex-row items-center justify-center mb-3 relative"  data-aos="fade-up">
-        <div className="md:pt-6 md:mr-6 mb-6 md:mb-0">
+    <div className="container p-1.5">
+      <section className="flex items-center justify-center mb-3 relative gap-6"  >
+        <div className="" data-aos="fade-right">
           <img
             src="/img_rectangle_19367.png"
             alt="Desert"
-            className="h-auto md:h-[500px] max-w-full rounded-2xl"
+            className=" w-[500px] h-[360px] lg:h-[460px] lg:w-full rounded-3xl"
           />
         </div>
-        <div className="w-full md:w-1/2">
-          <h2 className="text-2xl mb-4 text-primary">Information</h2>
-          <h3 className="text-4xl mt-8 font-Volkhov font-bold text-secondaire">
+        <div className="w-full lg:w-2/4 flex flex-col lg: lg:mb-12" data-aos="fade-left">
+          <h2 className="text-2xl lg:text-3xl font-bold text-primary lg:pb-6 ">Information</h2>
+          <h3 className="lg:text-4xl text-xl font-semibold pb-1.5">
             What is “Journey Tour & Travel“?
           </h3>
-          <br></br>
-          <p className="text-sm mb-4 text-justify">
+          {/* <br></br> */}
+          <p className="text-sm lg:text-2xl mb-4 textjustify">
             We believe interaction with the local people is what makes a trip memorable. No matter what cultural background, religion, race, or belief, there will always be overlapping interests. By interacting with locals, our perspectives on the world will broaden, a better understanding emerges, and friends will be made.
           </p>
-          <button  className="bg-primary rounded-full shadow h-12 px-6 outline-none text-white hover:bg-white hover:text-primary cursor-pointer text-base transition-bg hover:border hover:border-primary relative z-10">
+          <Link to="/about">
+          <button  className="bg-primary rounded-full shadow lg:h-12 h-8 lg:px-6 px-2 outline-none text-white hover:bg-white hover:text-primary cursor-pointer text-base transition-bg hover:border hover:border-primary relative z-10">
             Read More
           </button>
+          </Link>
         </div>
       </section>
     </div>
