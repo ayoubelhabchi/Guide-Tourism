@@ -49,8 +49,8 @@ import { Link } from 'react-router-dom';
         <Hero />
         <About />
         
-        <div className="flex flex-col items-center lg:gap-10 gap-4 bg-primary/10 px-12 p-3 lg:p-10">
-            <p className="lg:text-4xl text-xl text-center font-semibold text-black w-">
+        <div className="flex flex-col items-center lg:gap-10 gap-4 bgprimary/10 px-12 p-3 lg:p-10">
+            <p className="lg:text-4xl text-xl text-center font-semibold text-primary w-">
                 Why you should book at Journey for Tours and Travels ?
             </p>
           <div className="lg:flex-row flex flex-col justify-center lg:gap-10 gap-4">
@@ -68,14 +68,14 @@ import { Link } from 'react-router-dom';
 
 
         {/* Packages */}
-        <div className="flex w-full p-3 gap-2 ">         
+        {/* <div className="flex w-full lg:p-2 gap-2 ">         
           {data.map((d, index) => (
-            <div key={"desktopOne" + index} className="flex flex-col justify-center items-center w-full bg-contain bg-n-repeat h-[220px] md:p-5 rounded-[80px] border-primary border-4 " style={{ backgroundImage: `url(${d.backgroundImg})` }} >
+            <div key={"desktopOne" + index} className="flex flex-col justify-center items-center w-full bg-contain bg-n-repeat lg:h-[220px] h24 md:p-5 lg:rounded-[40px] border-primary lg:border2 pb2" style={{ backgroundImage: `url(${d.backgroundImg})` }} >
               <div className="relative h-[60px] self-stretch mb-4 " data-aos="zoom-in">
                 <img src={d.explorenature} alt="explore_nature" className="absolute bottom-[9.44px] right-[0.00px] m-auto h-[15px] w-[46%] md:w-auto " />
                 <div className="absolute bottom-0 left-0 right-0 top-4 flex justify-center items-center">
                   <div className="myauto flex flex-col items-center">
-                    <h1 className="text-xl lg:text-4xl  tracking-[1.80px] font-volk font-bold text-white">
+                    <h1 className="text-lg lg:text-4xl  tracking-[1.80px] font-volk font-bold text-white">
                       Promotion
                     </h1>
                     <h2 className="text-lg md:text-5xl mt[-3px] text-white font-year fontbold">
@@ -88,13 +88,13 @@ import { Link } from 'react-router-dom';
 
               <button
                 // shape="round"
-                className="bg-primary rounded-full shadow h-10 px-6 outline-none text-white hover:bg-white hover:text-primary cursor-pointer text-lg font-semibold transition-bg hover:border hover:border-primary mt-5" data-aos="zoom-in">
+                className="bg-primary rounded-full shadow lg:h-10 lg:px-6 px-2 outline-none text-white hover:bg-white hover:text-primary cursor-pointer text-lg font-semibold transition-bg hover:border hover:border-primary mb-2 lg:mt-5" data-aos="zoom-in">
                 Explore
               </button>
               </Link>
             </div>
           ))}
-        </div>
+        </div> */}
         {/* end Packages */}
         <SwipperHome />
       <Component />
