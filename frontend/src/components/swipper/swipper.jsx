@@ -69,7 +69,7 @@ const SwipperHome = () => {
   };
   return (
     <div>
-      <div className="flex flex-col py12 gap-5">
+      <div className="flex flex-col py12 gap-5 mt-10">
         <div className="flex flex-col lg:gap-4 gap-2 items-center justify-center">
           <p className="lg:mt12 mt-4 lg:w-full w2/2 lg:text-5xl text-2xl text-center font-medium lg:font-bold  text-primary">
             We Provide You Best Morocco Sightseeing Tours
