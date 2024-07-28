@@ -6,6 +6,7 @@
   import Aos from 'aos';
   import 'aos/dist/aos.css';
 import { Link } from 'react-router-dom';
+import HomeSearch from '../components/HomeSearch/HomeSearch';
   const data1 = [
     {
       circleimage: "/img_ellipse_625.png",
@@ -49,8 +50,8 @@ import { Link } from 'react-router-dom';
         <Hero />
         <About />
         
-        <div className="flex flex-col items-center lg:gap-10 gap-4 bgprimary/10 px-12 p-3 lg:p-10">
-            <p className="lg:text-4xl text-xl text-center font-semibold text-primary w-">
+        <div className="flex flex-col items-center lg:gap-10 gap-4 bg-primary/20 px-12 p-3 lg:p-10">
+            <p className="lg:text-4xl text-xl text-center font-bold text-primary w-">
                 Why you should book at Journey for Tours and Travels ?
             </p>
           <div className="lg:flex-row flex flex-col justify-center lg:gap-10 gap-4">
@@ -97,6 +98,7 @@ import { Link } from 'react-router-dom';
         </div> */}
         {/* end Packages */}
         <SwipperHome />
+        <HomeSearch/>
       <Component />
       </>
     );
