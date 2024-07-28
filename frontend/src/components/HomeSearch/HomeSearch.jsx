@@ -1,33 +1,45 @@
 import React from "react";
 import { FaSearch } from "react-icons/fa";
+import  { useEffect } from 'react';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
+
+
 
 
 export default function HomeSearch() {
+
+
+    useEffect(() => {
+        Aos.init({ duration: 2000 });
+      }, []);
+
+
   return (
     <div className=" bg-primary/20 h-full w-full px-2 ">
       <div className=" grid grid-cols-2 gap-2">
         <div className="grid grid-cols-3 gap-4 hfull ">
           <div className="grid grid-rows- h-full gap-2 ">
-            <div className="h-[240px] hfull w-full bg-gray rounded-b-3xl">
+            <div className="h-[240px] hfull w-full bg-gray rounded-b-3xl" data-aos="zoom-out-down">
               {/* Content for Card 1 */}
             </div>
-            <div className="h-[160px] w-full bg-black rounded-t-3xl">
+            <div className="h-[160px] w-full bg-black rounded-t-3xl" data-aos="zoom-in-up">
               {/* Content for Card 2 */}
             </div>
           </div>
           <div className="grid grid-rows- h-full gap-2">
-            <div className="h[160px] h-full w-full bg-red-400 rounded-b-3xl">
+            <div className="h[160px] h-full w-full bg-red-400 rounded-b-3xl" data-aos="zoom-in">
               {/* Content for Card 3 */}
             </div>
-            <div className="h[200px] h-f w-full bg-green-300 rounded-t-3xl">
+            <div className="h[200px] h-f w-full bg-green-300 rounded-t-3xl"data-aos="zoom-out-down">
               {/* Content for Card 4 */}
             </div>
           </div>
           <div className="grid grid-rows- h-full gap-2">
-            <div className="h-[160px] hfull w-full bg-gray rounded-b-3xl">
+            <div className="h-[160px] hfull w-full bg-gray rounded-b-3xl" data-aos="zoom-in-left">
               {/* Content for Card 1 */}
             </div>
-            <div className="h-[240px] w-full bg-black rounded-t-3xl">
+            <div className="h-[240px] w-full bg-black rounded-t-3xl" data-aos="zoom-out-left">
               {/* Content for Card 2 */}
             </div>
           </div>
