@@ -7,6 +7,7 @@
   import 'aos/dist/aos.css';
 import { Link } from 'react-router-dom';
 import HomeSearch from '../components/HomeSearch/HomeSearch';
+import CampingHome from '../components/CampingHome/CampingHome';
   const data1 = [
     {
       circleimage: "/img_ellipse_625.png",
@@ -99,6 +100,7 @@ import HomeSearch from '../components/HomeSearch/HomeSearch';
         {/* end Packages */}
         <SwipperHome />
         <HomeSearch/>
+        <CampingHome/>
       <Component />
       </>
     );
