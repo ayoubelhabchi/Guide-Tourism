@@ -30,7 +30,7 @@ export default function CampingHome() {
     }, [campings]);
 
     return (
-        <div className='h-full w-full bgprimary/10 mt-20 p-4'>
+        <div className='h-full w-full bgprimary/10 mt-10 p-4'>
             <div className='p-2 flex justify-between  gap-2 '>
                 <div>
                     <h1 className='capitalize text-primary lg:text-3xl text-lg text-nowrap font-bold lg:pb-2'>
@@ -56,9 +56,9 @@ export default function CampingHome() {
                 {displayedCampings.map((camping, index) => (
                     <div key={index} className={` w-full  shadow-xl shad bgprimary/20 bg-white rounded-3xl transition-transform duration-300 ease-in-out hover:scale-105 ${index === 0 ? 'col-span-2 grid grid-cols-2 rounded-3xl' : 'grid grid-rows-2 overflow-hidden lg:h-[350px] h-[250px] hfull'}`}>
                         <img src={camping.image} alt="" className={` w-full object-cover bgcover bg-center ${index === 0 ? "h-full rounded-l-3xl" : " h-full rounded-t-3xl"}`} />
-                        <div className={`p-2 z-50 textwhite font-semibold flex flex-col ${index === 0 ? '' : ''}`}>
-                            <h1 className='z-50 lg:text-3xl lg:pb-2 pb-  textprimary'>{camping.name}</h1>
-                            <h1 className='z-50 lg:text-lg flex items-center lg:gap-2 gap-1 text-primary/100'>
+                        <div className={`p-2 z50 textwhite font-semibold flex flex-col ${index === 0 ? '' : ''}`}>
+                            <h1 className='z50 lg:text-3xl lg:pb-2 pb-  textprimary'>{camping.name}</h1>
+                            <h1 className='z50 lg:text-lg flex items-center lg:gap-2 gap-1 text-primary/100'>
                             <FaLocationDot className='lg:text-lg text-sm'/>
                             {camping.location}
                             </h1>
