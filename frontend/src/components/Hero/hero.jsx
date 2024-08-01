@@ -47,40 +47,40 @@ const Hero = () => {
   };
 
   return (
-    <div className="w-full h-screen relative">
-      <div className="relative justify-center rounded-2xl lg:bp-32 lg:h-screen">
+    <div className="w-full hscreen relative">
+      <div className="relative justify-center rounded-2xl lg:bp-32 lg:h-screen hscreen">
         <img src={heroImg} alt="" className="w-full h-full object-cover" />
-        <div className="lg:w-4/5 lg:pl-20 p-2 lg:h-screen h-full lg:mt-[-150px] mt-[-120px]">
-          <div className="bg-white/40 backdrop-filter backdrop-blur-md rounded-md lg:h-20 lg:w-[730px] flex items-center justify-between p-4">
+        <div className="lg:w-4/5 lg:pl-20 p-2 lg:h-screen h-full lg:mt-[-200px] mt-[-120px]">
+          <div className="bg-white/40 backdrop-filter  backdrop-blur-md rounded-md lg:h-20 h-14 lg:w-[700px] w-[340px] flex items-center justify-between lg:p-4 p-1.5">
             <div>
               {showInput ? (
                 <input
                   type="text"
-                  placeholder="Destination"
-                  className="bg-transparent text-xl text-black rounded-2xl px-2 lg:w-[150px] w-[100px] placeholder:text-gray-100"
+                  placeholder="Where ?"
+                  className="bg-transparent lg:text-xl text-sm text-black rounded-2xl px-2 lg:w-[150px] w-[70px] placeholder:text-gray border-none"
                   value={destination}
                   onChange={handleInputChange}
                 />
               ) : (
                 <button
                   onClick={handleClick}
-                  className="bg-transparent text-xl text-white rounded-2xl px-2 lg:w-[150px] w-[100px] "
+                  className="bg-transparent lg:text-xl text-sm text-nowrap text-white rounded-2xl lg:px-2 lg:w-[150px] w[100px] "
                 >
                   Where ?
                 </button>
               )}
             </div>
-            <RxDividerVertical size={45} className="hidden md:block text-gray-200" />
-            <div className="flex">
+            <RxDividerVertical size={45} className="hidden md:block text-white/40" />
+            <div className="flex ">
               <select
                 value={selectedOption}
                 onChange={handleSelectChange}
-                className="bg-transparent text-xl text-white rounded-2xl px-2 lg:w-[150px] w-[100px] border-none"
+                className="bg-transparent lg:text-xl text-sm text-nowrap text-white rounded-2xl lg:px-2 lg:w-[150px] w-[90px] border-none"
               >
                 <option className="text-black" value="option1">Tours</option>
                 <option className="text-black" value="option2">Campings</option>
               </select>
-              <RxDividerVertical size={45} className="hidden md:block text-gray-200" />
+              <RxDividerVertical size={45} className="hidden md:block text-white/40" />
             </div>
             <div className="flex">
               {showInput ? (
@@ -89,12 +89,12 @@ const Hero = () => {
                   value={duration}
                   onChange={handleDurationChange}
                   placeholder="Duration"
-                  className="bg-transparent text-xl text-black rounded-2xl lg:w-[150px] w-[100px] placeholder:text-gray-100"
+                  className="bg-transparent lg:text-xl text-sm text-black rounded-2xl px-2 lg:w-[150px] w-[70px] placeholder:text-gray border-none"
                 />
               ) : (
                 <button
                   onClick={toggleDurationInput}
-                  className="bg-transparent text-xl text-white rounded-2xl px-2 lg:w-[150px] w-[100px] placeholder:text-gray-100"
+                  className="bg-transparent lg:text-xl text-sm text-nowrap text-white rounded-2xl lg:px-2 pr-2 lg:w-[150px] w[100px] placeholder:text-gray-100"
                 >
                   Duration ?
                 </button>
@@ -102,13 +102,13 @@ const Hero = () => {
             </div>
             <button
               onClick={handleSubmit}
-              className="text-lg bg-blue-400 py-2 px-3 lg:px-8 lg:h-12 rounded-2xl text-white bg-primary hover:bg-white hover:text-primary transition-bg hover:border-primary"
+              className="lg:text-lg lg:py-2 py-1.5 px-3 lg:px-8 lg:h-12 rounded-2xl text-white bg-primary hover:bg-white hover:text-primary transition-bg hover:border-primary"
             >
               Submit
             </button>
           </div>
-          <div className="lg:-top-[270px] -top-[170px] w-[450px] relative lg:w-[500px]">
-            <h1 className="text-white font-bold text-3xl lg:text-5xl">
+          <div className="lg:-top-[210px] -top-[130px] w-[350px] relative lg:w-[700px]">
+            <h1 className="text-white font-bold text-2xl lg:text-5xl">
               No matter where you're going, we'll take you there
             </h1>
           </div>

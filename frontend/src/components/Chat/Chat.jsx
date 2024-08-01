@@ -56,4 +56,3 @@ function Chat({handleChatClose}) {
 
 export default Chat
 
-///

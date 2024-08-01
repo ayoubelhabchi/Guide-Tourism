@@ -14,7 +14,7 @@ const sidebarClosedClass = 'w-20';
 
 export default function Sidebar() {
   const dispatch = useDispatch();
-  const { guideInfo, loading, error } = useSelector((state) => state.guide);
+  const { guideInfo, loading, error } = useSelector((state) => state.users);
   const [open, setOpen] = useState(true);
   const navigate = useNavigate();
 

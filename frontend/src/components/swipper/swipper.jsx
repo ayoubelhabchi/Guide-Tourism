@@ -1,69 +1,39 @@
-import React from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import { IoIosArrowDown } from 'react-icons/io';
-import imageDakhla from '../../assets/dakhla.jpg';
-import imageEssaouira from '../../assets/essaouira.jpeg';
-import imageMarzouga from '../../assets/marzouga.jpg';
-import imageOuarzazate from '../../assets/ouarzazate.jpg';
-import imageTamezmout from '../../assets/tamezmout.jpg';
-const data = [
-  {
-    id: 1,
-    name: 'Dakhla ',
-    category: 'burger',
-    image:
-    imageDakhla,
-    price: "560 dh",
-  },
-  {
-    id: 2,
-    name: 'Essaouira',
-    category: '',
-    image:
-    imageEssaouira,
-    price: '$',
-  },
-  {
-    id: 3,
-    name: 'Marzouga',
-    category: '',
-    image:
-    imageMarzouga,
-    price: "500 dh"
-  },
-  {
-    id: 4,
-    name: 'Ouarzazate',
-    category: '',
-    image:
-    imageOuarzazate,
-    price: '$$$',
-  },
-  {
-    id: 5,
-    name: 'Tamezmout',
-    category: 'pizza',
-    image:
-    imageTamezmout,
-    price: '$$',
-  },
-];
+import React from "react";
+import { useState, useEffect } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { IoIosArrowDown } from "react-icons/io";
+import { FaLocationDot } from "react-icons/fa6";
+import { fetchCardTours } from "../../features/Slices/tourSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
+
 const SliderArrow = ({ className, style, onClick, position }) => {
   const arrowStyle =
-    position === 'next'
-      ? { ...style, right: '10px' }
-      : { ...style, left: '10px', zIndex: '1' };
+    position === "next"
+      ? { ...style, right: "10px" }
+      : { ...style, left: "10px", zIndex: "1" };
 
   return <div className={className} style={arrowStyle} onClick={onClick} />;
 };
 const SwipperHome = () => {
+  const dispatch = useDispatch();
+
+  const tours = useSelector((state) => state.tours.cartTour);
+
+  useEffect(() => {
+    dispatch(fetchCardTours());
+  }, [dispatch]);
+
+  // console.log("gg", tours);
+
   const settings = {
     dots: true,
     infinite: true,
     slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToScroll: 2,
     initialSlide: 0,
     responsive: [
       {
@@ -92,66 +62,75 @@ const SwipperHome = () => {
       },
     ],
     autoplay: true,
-    speed: 1000,
+    speed: 2000,
     autoplaySpeed: 3000,
-    cssEase: 'linear',
+    cssEase: "linear",
     nextArrow: <SliderArrow position="next" />,
     prevArrow: <SliderArrow position="prev" />,
   };
   return (
     <div>
-      <div className="flex flex-col py-12 gap-5">
-        <div className="flex flex-col items-center justify-center">
-        <h1 className="w-full text-lg tracking-widest text-red-400 uppercase max-md:max-w-full text-center">
-      Promotion
-    </h1>
-    <p className="mt-16 w-full text-5xl leading-[71px] text-indigo-950 max-md:mt-10 max-md:max-w-full max-md:text-4xl max-md:leading-[63px] text-center">
-      We Provide You Best Morocco Sightseeing Tours
-    </p>
-   
-    <p className="mt-6 w-full text-base leading-7 text-black max-md:max-w-full text-center">
-      Et labore harum non nobis ipsum eum molestias mollitia et corporis
-      praesentium a laudantium internos. Non quis eius quo eligendi corrupti et
-      fugiat nulla qui soluta recusandae in maxime quasi aut ducimus illum aut
-      optio quibusdam!
-    </p>
+      <div className="flex flex-col py12 gap-5 mt-10">
+        <div className="flex flex-col lg:gap-4 gap-2 items-center justify-center">
+          <p className="lg:mt12 mt-4 lg:w-full w2/2 lg:text-5xl text-2xl text-center font-medium lg:font-bold  text-primary">
+            We Provide You Best Morocco Sightseeing Tours
+          </p>
+
+          <p className="mt6 wfull lg:px-8 px-3 w lg:text-xl text-black text-center font-normal">
+            City tours in Morocco are an exhilarating journey where passion
+            meets discovery. Explore the vibrant streets and immerse yourself in
+            the rich culture of this captivating country. From the bustling
+            souks of Marrakech to the historic medinas of Fes, every city tour
+            promises adventure and unforgettable memories.
+          </p>
+        </div>
+        <div className="lg:mx-3  w-f">
+  <Slider {...settings} >
+    {tours.map((item, index) => (
+      <div key={index} className="w-full lg:px-2 px-1">
+      <div className="relative rounded-3xl px overflow-hidden lg:w-[300px] lg:h-[250px] w-full h-[180px]">
+        <img
+          src={item.image}
+          alt={item.name}
+          className="w-full h-full object-cover"
+        />
+    <div className="absolute bottom-2 left-2 right-2 h[70px] backdrop-blur bg-white/25 rounded-[20px] lg:p-1.5 p-1 border-t-[1.5px] border-white/60">
+          <div className="flex flexcol justify-between text-white w-full">
+            <div className="lg:text-xl text-lg capitalize font-normal">
+              <h1>
+                {item.title}
+              </h1>
+              <h1 className=" flex items-center gap-1 lg:text-sm text-xs">
+                <FaLocationDot/>
+                {item.category}
+              </h1>
+
+            </div>
+            <div>
+              <h1 className=" lg:text-xl text-sm">
+                {item.price} MAD
+
+              </h1>
+              <h3 className=" text-xs">/Person</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     
-        </div>
-        <div className="mx-12 ">
-          <Slider {...settings}>
-            {data.map((item, index) => (
-              <div key={index}>
-                <div className="border rounded-lg mx-2">
-                  <img
-                    width={400}
-                    height={300}
-                    src={item.image}
-                    alt={item.name}
-                    className="w-full h-[300px] object-cover rounded-t-lg "
-                  />
-                  <div className="flex flex-col gap-2 px-2 py-4">
-                    <div className="text-lg ">{item.name}</div>
+    ))}
+  </Slider>
+</div>
 
-                    <div className="flex flex-row justify-between items-center font-semibold">
-                      <p>500.00 MAD</p>
-                      <button className="bg-primary duration-200 p-1 text-sm rounded-full text-white  hover:bg-white hover:border-primary hover:text-primary">
-                       Book now
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </Slider>
-        </div>
-
-        <div className="flex flex-col justify-center items-center pt-9 ">
-          <h2 className="text-xl font-semibold tracking-tight ">
-           Discover more packages
+        <div className="flex flex-col justify-center items-center pt-2 c ">
+        <Link to="/tour" className="cursor-pointer">
+          <h2 className="text-xl font-semibold trackingtight ">
+            Discover More
           </h2>
-          <div className="animate-bounce text-bold">
+          <div className="animate-bounce text-bold flex justify-center">
             <IoIosArrowDown size={40} className="text-primary" />
           </div>
+        </Link>
         </div>
       </div>
     </div>
