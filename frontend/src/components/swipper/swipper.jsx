@@ -4,6 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { IoIosArrowDown } from "react-icons/io";
+import { FaLocationDot } from "react-icons/fa6";
 import { fetchCardTours } from "../../features/Slices/tourSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -31,7 +32,7 @@ const SwipperHome = () => {
   const settings = {
     dots: true,
     infinite: true,
-    slidesToShow: 5,
+    slidesToShow: 4,
     slidesToScroll: 2,
     initialSlide: 0,
     responsive: [
@@ -47,7 +48,7 @@ const SwipperHome = () => {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 2,
           slidesToScroll: 2,
           initialSlide: 2,
         },
@@ -83,31 +84,40 @@ const SwipperHome = () => {
             promises adventure and unforgettable memories.
           </p>
         </div>
-        <div className="lg:mx-4  w-f">
+        <div className="lg:mx-3  w-f">
   <Slider {...settings} >
     {tours.map((item, index) => (
-      <div key={index} className="w-full mx- px-1 ">
-        <div className="relative border-primary border-2 rounded-3xl mx- px overflow-hidden lg:w-full lg:h-[300px] w-[155px] h-[200px]">
-          <img
-            src={item.image}
-            alt={item.name}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute bottom-0 w-full h-[90px] bg-gradient-to-t via-black/50 from-black/80 to-transparent rounded-b-[15px]"></div>
-
-          <div className="flex tw flex-col absolute bottom-1 p-2 text-white w-full">
-            <div className="text-2xl capitalize font-semibold">
-              {item.title}
-            </div>
-
-            <div className="font-medium">
+      <div key={index} className="w-full lg:px-2 px-1">
+      <div className="relative rounded-3xl px overflow-hidden lg:w-[300px] lg:h-[250px] w-full h-[180px]">
+        <img
+          src={item.image}
+          alt={item.name}
+          className="w-full h-full object-cover"
+        />
+    <div className="absolute bottom-2 left-2 right-2 h[70px] backdrop-blur bg-white/25 rounded-[20px] lg:p-1.5 p-1 border-t-[1.5px] border-white/60">
+          <div className="flex flexcol justify-between text-white w-full">
+            <div className="lg:text-xl text-lg capitalize font-normal">
               <h1>
-                {item.price} <strong>MAD</strong>
+                {item.title}
               </h1>
+              <h1 className=" flex items-center gap-1 lg:text-sm text-xs">
+                <FaLocationDot/>
+                {item.category}
+              </h1>
+
+            </div>
+            <div>
+              <h1 className=" lg:text-xl text-sm">
+                {item.price} MAD
+
+              </h1>
+              <h3 className=" text-xs">/Person</h3>
             </div>
           </div>
         </div>
       </div>
+    </div>
+    
     ))}
   </Slider>
 </div>
