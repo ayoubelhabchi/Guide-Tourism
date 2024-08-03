@@ -1,7 +1,9 @@
+
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchToursById, fetchUpdateTour } from '../../features/Slices/guideSlice';
+import { TbCloudUpload } from "react-icons/tb";
 
 function UpdateTour() {
   const { id } = useParams();
@@ -45,10 +47,10 @@ function UpdateTour() {
         category: tour.category || '',
         duration: tour.duration || '',
         price: tour.price || '',
-        image: null // Assuming image is being uploaded and not coming from tour data
+        image: null 
       });
       if (tour.image) {
-        setImagePreview(`${tour.image}`); // Set the image preview URL
+        setImagePreview(`${tour.image}`); 
       }
     }
     console.log("Form data updated:", {
@@ -104,8 +106,9 @@ function UpdateTour() {
   };
 
   return (
-    <div className='bg-slate-200 rounded shadow-lg w-[900px] h-[680px] p-9'>
+    <div className='bg-slate-200 rounded shadow-lg w-[900px] h-[670px] p-9'>
       <div className='text-3xl text-primary'>Update tour</div>
+      <hr className='my-4 border-slate-400' />
       <form onSubmit={handleSubmit}>
         <div className='relative flex flex-cols-2'>
           <div>
@@ -155,38 +158,35 @@ function UpdateTour() {
             <div className='text-lg font-bold'>
               <p>Image</p>
             </div>
-            <div className='bg-white'>
-              <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-[400px] h-60 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                  <svg className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
-                  </svg>
-                  <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"><span className="font-semibold">Click to upload</span> or drag and drop</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
-                  {fileName && <p className="font-semibold mt-2">{fileName}</p>}
-                </div>
-                <input 
-                  id="dropzone-file" 
-                  type="file" 
-                  className="hidden rounded" 
-                  name='image' 
-                  onChange={handleFileChange} 
-                />
-              </label>
-            </div>
-            {imagePreview && (
-              <div className='mt-4'>
-                <img 
-                  src={imagePreview} 
-                  alt="Preview" 
-                  className='w-96 h-52 rounded object-cover' 
-                />
-              </div>
-            )}
+            <div className='bg-'>
+  {imagePreview && (
+    <div className='relative mt-4'>
+      <img 
+        src={imagePreview} 
+        alt="Preview" 
+        className='w-96 h-52 rounded object-cover' 
+      />
+      <label 
+        htmlFor="dropzone-file" 
+        className="absolute top-0 left-0 w-full h-full flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity cursor-pointer"
+      >
+       <TbCloudUpload size={40} className="text-white "/>
+      </label>
+    </div>
+  )}
+  <input 
+    id="dropzone-file" 
+    type="file" 
+    className="hidden" 
+    name='image' 
+    onChange={handleFileChange}
+  />
+</div>
+
           </div>
         </div>
         <div className='flex gap-20 relative top-8 left-[200px]'>
-          <Link to="/dashboard/Tours">
+          <Link to="/dashboard">
             <button type='button' className='bg-primary rounded w-[150px] h-[40px] text-white'>Dashboard</button>
           </Link>
           <button type='submit' className='bg-primary rounded w-[150px] h-[40px] text-white'>Update</button>

@@ -14,7 +14,8 @@ const sidebarClosedClass = 'w-20';
 
 export default function Sidebar() {
   const dispatch = useDispatch();
-  const { guideInfo, loading, error } = useSelector((state) => state.users);
+  const { guideInfo, loading, error } = useSelector((state) => state.guideInfo);
+  console.log(guideInfo);
   const [open, setOpen] = useState(true);
   const navigate = useNavigate();
 
@@ -50,10 +51,10 @@ export default function Sidebar() {
         <IoIosArrowDropleftCircle size={40} />
       </div>
       <div className={`rounded-full ml-12 w-[92px] h-[92px] items-center ${!open && "scale-0"}`}>
-        <div className={`bg-yellow-500 rounded-full ml-4 lg:ml-0 ${open ? 'w-[72px] h-[72px] lg:h-[92px] lg:w-[92px]' : ''}`}>
-          {guideInfo && guideInfo.guide && (
+        <div className={`rounded-full ml-4 lg:ml-0 ${open ? 'w-[72px] h-[72px] lg:h-[92px] lg:w-[92px]' : ''}`}>
+        {guideInfo && guideInfo.guide && (
             <img
-              src={`http://localhost:4000/${guideInfo.guide.profile_picture}`}
+              src={guideInfo.guide.profile_picture}
               alt="Profile"
               className={`rounded-full ml-4 lg:ml-0 ${open ? 'w-[72px] h-[72px] lg:h-[92px] lg:w-[92px]' : ''}`}
             />

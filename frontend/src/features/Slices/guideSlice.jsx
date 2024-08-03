@@ -90,7 +90,8 @@ const guideSlice = createSlice({
         builder.addCase(fetchTours.fulfilled, (state, action) => {
             state.loading = false;
             state.guideTours = action.payload;
-            console.log("guideTours", state.guideTours);
+            state.tourCount = action.payload.length;
+            // console.log("guideTours", state.guideTours);
             state.error = '';
         });
     
