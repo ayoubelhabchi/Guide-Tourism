@@ -118,7 +118,7 @@ export default function DashboardGuides() {
 
       </div>
 
-      <div className=' mt-4 h-[400px] bg-white shadow-2xl rounded-xl'>
+      <div className=' mt-4 hmax h-[340px] bg-white shadow-2xl rounded-xl'>
         <Bar options={options} data={data} />
       </div>
     </div>
