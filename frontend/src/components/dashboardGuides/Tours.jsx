@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchTours, fetchToursById } from '../../features/Slices/guideSlice';
-import { MdOutlineDeleteForever } from "react-icons/md";
-import { IoCreate } from "react-icons/io5";
+import { MdDeleteOutline } from "react-icons/md";
+import { TbEdit } from "react-icons/tb";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Pagination from '@mui/material/Pagination';
@@ -69,7 +69,7 @@ function Tours() {
       <div className='flex items-center justify-between  px10 pt2'>
         <p className='text-primary font-bold lg:text-3xl'>Tours</p>
         <Link to="/CreateTour">
-          <button className='bg-primary rounded-full p-1 lg:px-7 px-3 lg:text-xl font-semibold border-primary text-white hover:bg-white hover:text-primary hover:border-primary'>Add New</button>
+          <button className='bg-primary rounded-full p-1 lg:px-7 px-3 lg:text-xl font-semibold border-primary text-white hover:bg-white hover:text-primary border hover:border-primary'>Add New</button>
         </Link>
       </div>
 
@@ -116,12 +116,12 @@ function Tours() {
                   <img className='rounded w-20 h-[65px]' src={`${tour.image}`} alt={tour.title} />
                 </td>
                 <td className='p-2 text-base text-gray'>
-                  <div className='flex items-center'>
+                  <div className='flex gap-2 items-center'>
                     <Link to={`/UpdateTour`}>
-                      <IoCreate onClick={() => dispatch(fetchToursById(tour._id))} size={30} className='text-primary' />
+                      <TbEdit onClick={() => dispatch(fetchToursById(tour._id))} size={23} className='text-primary' />
                     </Link>
                     <button onClick={() => handleDeleteClick(tour._id)}>
-                      <MdOutlineDeleteForever size={30} className='text-red-600' />
+                      <MdDeleteOutline size={23} className='text-red-600' />
                     </button>
                   </div>
                 </td>
