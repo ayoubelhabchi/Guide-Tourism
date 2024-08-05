@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,7 +14,7 @@ function UpdateTour() {
   const dispatch = useDispatch();
   
   useEffect(() => {
-    dispatch(fetchToursById(id)); // Fetch tour data by ID
+    dispatch(fetchToursById(id));
   }, [dispatch, id]);
   
   const handleFileChange = (e) => {
@@ -23,12 +22,12 @@ function UpdateTour() {
     if (file) {
       setFormData({ ...formData, image: file });
       setFileName(file.name);
-      setImagePreview(URL.createObjectURL(file)); // Generate and set the image preview URL
+      setImagePreview(URL.createObjectURL(file));
     }
   };
 
   const tour = useSelector((state) => state.guides.getTour);
-  console.log("Fetched tour data:", tour); // Check if tour data is fetched correctly
+  // console.log("Fetched tour data:", tour); 
 
   const [formData, setFormData] = useState({
     title: '',
@@ -106,104 +105,129 @@ function UpdateTour() {
   };
 
   return (
-    <div className='bg-slate-200 rounded shadow-lg w-[900px] h-[670px] p-9'>
-      <div className='text-3xl text-primary'>Update tour</div>
-      <hr className='my-4 border-slate-400' />
-      <form onSubmit={handleSubmit}>
-        <div className='relative flex flex-cols-2'>
-          <div>
-            <p className='py-4'>Title</p>
-            <input
-              name='title'
-              value={formData.title}
-              type="text"
-              onChange={handleChange}
-              className="w-[300px] border-none bg-white"
+    <div className='bg-white w-full rounded-3xl shadow-lg p-6'>
+  <div className='text-3xl font-semibold text-primary mb-4'>Update Tour</div>
+  <hr className='my-4 border-slate-400' />
+
+  <form onSubmit={handleSubmit} className='grid lg:grid-cols-2 items-center lg:gap-x-16'>
+    <div className='space-y-2'>
+      <div> 
+        <label htmlFor='title' className='block text-sm font-medium text-gray-700 mb-1'>Title</label>
+        <input
+          id='title'
+          name='title'
+          value={formData.title}
+          type='text'
+          onChange={handleChange}
+          className='w-full border-[1.5px] border-primary rounded-2xl p-2'
+        />
+      </div>
+
+      <div>
+        <label htmlFor='description' className='block text-sm font-medium text-gray-700 mb-1'>Description</label>
+        <textarea
+          id='description'
+          name='description'
+          value={formData.description}
+          type='text'
+          onChange={handleChange}
+          className='w-full border-[1.5px] border-primary rounded-2xl p-2 min-h-[45px] max-h-[100px]'
+        />
+      </div>
+
+      <div>
+        <label htmlFor='category' className='block text-sm font-medium text-gray-700 mb-1'>Category</label>
+        <input
+          id='category'
+          name='category'
+          value={formData.category}
+          type='text'
+          onChange={handleChange}
+          className='w-full border-[1.5px] border-primary rounded-2xl p-2'
+        />
+      </div>
+
+      <div>
+        <label htmlFor='duration' className='block text-sm font-medium text-gray-700 mb-1'>Duration</label>
+        <input
+          id='duration'
+          name='duration'
+          value={formData.duration}
+          type='text'
+          onChange={handleChange}
+          className='w-full border-[1.5px] border-primary rounded-2xl p-2'
+        />
+      </div>
+
+      <div>
+        <label htmlFor='price' className='block text-sm font-medium text-gray-700 mb-1'>Price</label>
+        <input
+          id='price'
+          name='price'
+          value={formData.price}
+          type='text'
+          onChange={handleChange}
+          className='w-full border-[1.5px] border-primary rounded-2xl p-2'
+        />
+      </div>
+    </div>
+
+    <div className='flex flex-col items-center wf'>
+      <div className='text-lg font-bold mb-4'>
+      </div>
+      <div className=''>
+        {imagePreview && (
+          <div className='relative'>
+            <img
+              src={imagePreview}
+              alt='Preview'
+              className=' w-full max-h-[270px] rounded-3xl object-cover'
             />
-            <p className='py-4'>Description</p>
-            <input
-              name='description'
-              value={formData.description}
-              type="text"
-              onChange={handleChange}
-              placeholder='Enter description'
-              className="w-[300px] border-none bg-white"
-            />
-            <p className='py-4'>Category</p>
-            <input
-              name='category'
-              value={formData.category}
-              type="text"
-              onChange={handleChange}
-              className="w-[300px] border-none bg-white"
-            />
-            <p className='py-4'>Duration</p>
-            <input
-              name='duration'
-              value={formData.duration}
-              type="text"
-              onChange={handleChange}
-              className="w-[300px] border-none bg-white"
-            />
-            <p className='py-4'>Price</p>
-            <input
-              name='price'
-              value={formData.price}
-              type="text"
-              onChange={handleChange}
-              className="w-[300px] border-none bg-white"
-            />
+            <label
+              htmlFor='dropzone-file'
+              className='absolute inset-0 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition-opacity cursor-pointer'
+              
+            >
+              <TbCloudUpload size={40} className='text-white' />
+              <h1 className=' text-white text-xl font-semibold capitalize'>Drop to update your image</h1>
+            </label>
           </div>
-          <div className="flex flex-col gap-4 items-center justify-center w-full">
-            <div className='text-lg font-bold'>
-              <p>Image</p>
-            </div>
-            <div className='bg-'>
-  {imagePreview && (
-    <div className='relative mt-4'>
-      <img 
-        src={imagePreview} 
-        alt="Preview" 
-        className='w-96 h-52 rounded object-cover' 
-      />
-      <label 
-        htmlFor="dropzone-file" 
-        className="absolute top-0 left-0 w-full h-full flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity cursor-pointer"
+        )}
+        <input
+          id='dropzone-file'
+          type='file'
+          className='hidden'
+          name='image'
+          onChange={handleFileChange}
+        />
+      </div>
+    </div>
+
+    <div className='col-span2 flex justify-between mt-8'>
+      <Link to='/dashboard'>
+        <button type='button' className='bg-primary rounded w-36 h-10 text-white'>Dashboard</button>
+      </Link>
+      <button type='submit' className='bg-primary rounded w-36 h-10 text-white'>Update</button>
+    </div>
+  </form>
+
+  {isModalOpen && (
+    <div
+      className='fixed inset-0 backdrop-blur-sm bg-opacity-50 flex items-center justify-center z-50'
+      onClick={handleBackdropClick}
+    >
+      <div
+        className='bg-white rounded-lg shadow-lg p-8 w-96'
+        onClick={(e) => e.stopPropagation()}
       >
-       <TbCloudUpload size={40} className="text-white "/>
-      </label>
+        <h2 className='text-2xl font-bold mb-4'>Success</h2>
+        <p className='mb-4'>Tour updated successfully!</p>
+        <button onClick={closeModal} className='bg-primary rounded w-24 h-10 text-white'>OK</button>
+      </div>
     </div>
   )}
-  <input 
-    id="dropzone-file" 
-    type="file" 
-    className="hidden" 
-    name='image' 
-    onChange={handleFileChange}
-  />
 </div>
 
-          </div>
-        </div>
-        <div className='flex gap-20 relative top-8 left-[200px]'>
-          <Link to="/dashboard">
-            <button type='button' className='bg-primary rounded w-[150px] h-[40px] text-white'>Dashboard</button>
-          </Link>
-          <button type='submit' className='bg-primary rounded w-[150px] h-[40px] text-white'>Update</button>
-          
-        </div>
-      </form>
-      {isModalOpen && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 bg-black/70 flex items-center justify-center z-50" onClick={handleBackdropClick}>
-          <div className="bg-white rounded-lg shadow-lg p-8 w-[400px]" onClick={(e) => e.stopPropagation()}>
-            <h2 className="text-2xl font-bold mb-4">Success</h2>
-            <p className="mb-4">Tour updeted successfully!</p>
-            <button onClick={closeModal} className="bg-primary rounded w-[90px] h-[40px] text-white">OK</button>
-          </div>
-        </div>
-      )}
-
-    </div>
   );
 }
 
