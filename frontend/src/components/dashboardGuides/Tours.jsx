@@ -17,6 +17,7 @@ function Tours() {
   const [isConfirmDeleteModalOpen, setIsConfirmDeleteModalOpen] = useState(false);
   const [tourIdToDelete, setTourIdToDelete] = useState(null);
   const [current, setCurrent] = useState(1);
+  const [expandedDescription, setExpandedDescription] = useState({});
   const items = 4;
 
   useEffect(() => {
@@ -56,47 +57,67 @@ function Tours() {
     }
   };
 
+  const toggleDescription = (index) => {
+    setExpandedDescription(prevState => ({
+      ...prevState,
+      [index]: !prevState[index]
+    }));
+  };
+
   return (
-    <div className='w-[1000px] h-screen bg-gray-300 shadow-xl'>
-      <ToastContainer />
-      <div className='flex items-center gap-[200px]'>
-        <p className='text-primary text-3xl px-10 py-4'>Tours</p>
-        <div className="relative left-[400px]">
-          <Link to="/dashboard/CreateTour">
-            <button className='bg-primary w-[100px] h-[40px] rounded text-white font-bold'>Add New</button>
-          </Link>
-        </div>
+    <div className='w[1000px] p-4 w-full h-full bg-white shadow-xl overflow-x-auto rounded-xl'>
+      <div className='flex items-center justify-between  px10 pt2'>
+        <p className='text-primary font-bold lg:text-3xl'>Tours</p>
+        <Link to="/CreateTour">
+          <button className='bg-primary rounded-full p-1 lg:px-7 px-3 lg:text-xl font-semibold border-primary text-white hover:bg-white hover:text-primary hover:border-primary'>Add New</button>
+        </Link>
       </div>
 
-      <div className='p-6 w-[900px] relative'>
-        <table className='w-full p-5 shadow-xl'>
-          <thead className='bg-slate-200 border-b-2 border-slate-300'>
+      <div className='pt-4 w-full'>
+        <table className='w-full shadow-xl'>
+          <thead className='bg-primary/100 text-white'>
             <tr>
               <th className='p-3 text-sm font-semibold tracking-wide text-left'></th>
-              <th className='p-3 text-sm font-semibold tracking-wide text-left'>Title</th>
-              <th className='p-3 text-sm font-semibold tracking-wide text-left'>Description</th>
-              <th className='p-3 text-sm font-semibold tracking-wide text-left'>Category</th>
-              <th className='p-3 text-sm font-semibold tracking-wide text-left'>Duration</th>
-              <th className='p-3 text-sm font-semibold tracking-wide text-left'>Price</th>
-              <th className='p-3 text-sm font-semibold tracking-wide text-left'>Image</th>
-              <th className='p-3 text-sm font-semibold tracking-wide text-left'>Action</th>
+              <th className='p-3 text-base font-semibold tracking-wide text-left'>Title</th>
+              <th className='p-3 text-base font-semibold tracking-wide text-left'>Description</th>
+              <th className='p-3 text-base font-semibold tracking-wide text-left'>Category</th>
+              <th className='p-3 text-base font-semibold tracking-wide text-left'>Duration</th>
+              <th className='p-3 text-base font-semibold tracking-wide text-left'>Price</th>
+              <th className='p-3 text-base font-semibold tracking-wide text-left'>Image</th>
+              <th className='p-3 text-base font-semibold tracking-wide text-left'>Action</th>
             </tr>
           </thead>
           <tbody>
             {DataPerPage.map((tour, index) => (
-              <tr key={index} className='border-b-2 border-slate-300'>
+              <tr key={index} className='border-b-2 border-primary/50'>
                 <td></td>
-                <td className="p-3 text-sm text-gray-700">{tour.title}</td>
-                <td className="p-3 text-sm text-gray-700">{tour.description}</td>
-                <td className="p-3 text-sm text-gray-700">{tour.category}</td>
-                <td className="p-3 text-sm text-gray-700">{tour.duration}</td>
-                <td className="p-3 text-sm text-gray-700">{tour.price} DH</td>
-                <td className="p-3">
-                  <img className='rounded w-20 h-20' src={`${tour.image}`} alt={tour.title} />
+                <td className="p-2 text-base">{tour.title}</td>
+                <td className="p-2 text-base ">
+                <td className="p-2 text-base">
+                  <div className="text-sm lg:w-[400px] w-[200px] overflow-auto whitespace-normal">
+                    {expandedDescription[index] ? (
+                      <div className="lg:max-h-[140px] max-h-[100px] overflow-auto">
+                        {tour.description}
+                      </div>
+                    ) : (
+                      `${tour.description.substring(0, 10)}...`
+                    )}
+                    <button onClick={() => toggleDescription(index)} className="text-primary text-xs ml-2">
+                      {expandedDescription[index] ? 'View Less' : 'View More'}
+                    </button>
+                  </div>
                 </td>
-                <td className='p-3 text-sm text-gray-700'>
+
+                </td>
+                <td className="p-2 text-base text-gray-700">{tour.category}</td>
+                <td className="p-2 text-base text-gray-700">{tour.duration}</td>
+                <td className="p-2 text-base text-gray-700">{tour.price} DH</td>
+                <td className="p-2">
+                  <img className='rounded w-20 h-[65px]' src={`${tour.image}`} alt={tour.title} />
+                </td>
+                <td className='p-2 text-base text-gray'>
                   <div className='flex items-center'>
-                    <Link to={`/dashboard/UpdateTour`}>
+                    <Link to={`/UpdateTour`}>
                       <IoCreate onClick={() => dispatch(fetchToursById(tour._id))} size={30} className='text-primary' />
                     </Link>
                     <button onClick={() => handleDeleteClick(tour._id)}>

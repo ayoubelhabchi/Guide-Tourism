@@ -8,7 +8,7 @@ import { fetchGuideInfo } from '../../features/Slices/infoguideSlice';
 
 const linkClass = 'flex items-center gap-2 px-3 m2 py-2 hover:bgprimary w-full rounded-l-3xl duration-300 rounded-sm text-base';
 const activeLinkClass = 'bg-primary text-white font-semibold hover:bg-primary';
-const sidebarOpenClass = 'lg:w-56 w-36';
+const sidebarOpenClass = 'lg:w-[180px] w-36';
 const sidebarClosedClass = 'w-20';
 
 export default function Sidebar() {
@@ -41,7 +41,7 @@ export default function Sidebar() {
 
   return (
     <div className={`${open ? sidebarOpenClass : sidebarClosedClass} duration-300 h-screen top-0 bg-white flex flex-col relative`}>
-      <div className={`absolute cursor-pointer right-[-16px] bgprimary rounded-full ${!open ?"rotate-180 top-6" : 'top-16'}`} onClick={() => setOpen(!open)}>
+      <div className={`absolute cursor-pointer right-[-16px] bgprimary rounded-full ${!open ?"rotate-180 top-3" : 'top-16'}`} onClick={() => setOpen(!open)}>
         <IoIosArrowDropleftCircle className=' text-4xl text text-primary border-none bg-white rounded-full p-1' />
       </div>
       <div className={`flex lg:mt-6 mt-4 w-full justify-center items-center ${open ? 'w-[92px] h-[92px]' : 'w-0 h-0'} transition-transform`}>

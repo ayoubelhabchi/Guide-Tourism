@@ -9,7 +9,7 @@ function Dashboard() {
       <TopBar className="w-full" /> {/* TopBar with full width */}
       <div className="flex flex-1 overflow-hidden">
         <Sidebar className="" /> {/* Sidebar with fixed width */}
-        <main className="flex-1 px-6 overflow-auto pb-4 pt-2 bg-slate-100">
+        <main className="flex-1 px-6 overflow-auto pb-4 pt-2 bg-slate-200">
           <Outlet />
         </main>
       </div>
