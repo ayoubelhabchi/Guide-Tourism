@@ -78,7 +78,7 @@ function CreateTour() {
 
   return (
     <>
-      <div className='bg-white rounded-2xl shadow-lg w-full hscreen hfull p-4'>
+      <div className='bg-white rounded-2xl shadow-lg w-full hscreen hfull p-4 overflow-y-auto max-h-[calc(100vh-70px)] lg:max-h-[calc(100vh-90px)]'>
         <div className='text-2xl font-bold text-primary'>Create Tour</div>
         <hr className='my-2 border-slate-400' />
 

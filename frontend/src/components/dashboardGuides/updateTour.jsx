@@ -96,11 +96,12 @@ function UpdateTour() {
   };
 
   return (
-    <div className='bg-white w-full rounded-3xl shadow-lg p-3 lg:p-6'>
+    <div className='bg-white w-full rounded-2xl shadow-lg p-3 lg:p-6 overflowhidden overflow-y-auto pr2 max-h-[calc(100vh-90px)]'>
       <div className='text-3xl font-semibold text-primary mb-2'>Update Tour</div>
       <hr className='my-4 border-slate-400' />
 
-      <form onSubmit={handleSubmit} className='grid lg:grid-cols-2 grid-cols-1 items-center lg:gap-x-16'>
+      <div className=' hscreen'>
+      <form onSubmit={handleSubmit} className='grid lg:grid-cols-2 grid-cols-1 items-center lg:gap-x-8'>
         <div className='space-y-2'>
           <div> 
             <label htmlFor='title' className='block text-sm font-medium text-gray-700 mb-1'>Title</label>
@@ -172,7 +173,7 @@ function UpdateTour() {
                 <img
                   src={imagePreview}
                   alt='Preview'
-                  className=' w-full max-h-[270px] rounded-3xl object-cover'
+                  className=' w-full max-h-[300px] rounded-3xl object-cover'
                 />
                 <label
                   htmlFor='dropzone-file'
@@ -200,6 +201,7 @@ function UpdateTour() {
           <button type='submit' className='bg-primary rounded w-36 h-10 text-white'>Update</button>
         </div>
       </form>
+      </div>
 
       {isModalOpen && (
         <div

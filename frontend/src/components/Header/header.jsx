@@ -61,7 +61,7 @@ const Header = ({ handleProfile }) => {
             : isScrolled
             ? "backdrop-blur-lg text-black"
             : "bg-transparent text-white"
-        } ${location.pathname === '/dashboard' || location.pathname === '/dashboard/Tours' || location.pathname === '/UpdateTour' ? 'hidden' : ''} fixed top-0 left-0 w-full h-20 flex justify-between items-center z-40`}
+        } ${location.pathname === '/dashboard' || location.pathname === '/dashboard/Tours' || location.pathname === '/UpdateTour' || location.pathname === '/CreateTour' ? 'hidden' : ''} fixed top-0 left-0 w-full h-20 flex justify-between items-center z-40`}
       >
         <div className="container mx-auto lg:px-3">
           <div className="lg:w-full w-11/12 mx-auto h-full flex justify-between items-center">
