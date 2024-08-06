@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchGuideInfo } from '../../features/Slices/infoguideSlice';
+import { fetchTours } from '../../features/Slices/guideSlice';
+
 import { Link } from 'react-router-dom';
 function TopBar() {
   const dispatch = useDispatch();
@@ -9,6 +11,13 @@ function TopBar() {
   useEffect(() => {
     dispatch(fetchGuideInfo());
   }, [dispatch]);
+
+
+  useEffect(() => {
+    if (guideInfo && guideInfo.guide && guideInfo.guide.id) {
+      dispatch(fetchTours(guideInfo.guide.id));
+    }
+  }, [dispatch, guideInfo]);
 
   return (
     <div className="bg-primary flex items-center p-2">
