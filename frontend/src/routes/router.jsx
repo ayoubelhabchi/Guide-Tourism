@@ -13,6 +13,7 @@ import CreateTour from "../components/dashboardGuides/createTour";
 import UpdateTour from "../components/dashboardGuides/updateTour";
 import EmailConfirmation from "../pages/emailConfermation";
 import { AuthProvider } from "../contexts/AuthContext";
+import LoginModal from "../components/Modals/login";
 
 const Router = () => {
   return (
@@ -21,6 +22,7 @@ const Router = () => {
         {/* Main Routes */}
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
+        {/* <Route path="/home/login" element={<LoginModal/>} /> */}
         <Route path="/about" element={<About />} />
         <Route path="/tour" element={<Tour />} />
         <Route path="/camping" element={<Camping />} />

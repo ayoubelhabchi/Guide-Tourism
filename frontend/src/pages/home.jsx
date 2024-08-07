@@ -51,7 +51,7 @@ import CampingHome from '../components/CampingHome/CampingHome';
         <Hero />
         <About />
         
-        <div className="flex flex-col items-center lg:gap-10 gap-4 bg-primary/20 px-12 p-3 lg:p-10 mt-20">
+        <div className="flex flex-col items-center lg:gap-10 gap-4 bg-primary/20 px-12 p-3 lg:p-10 mt-10">
             <p className="lg:text-4xl text-xl text-center font-bold text-primary w-">
                 Why you should book at Journey for Tours and Travels ?
             </p>

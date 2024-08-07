@@ -1,13 +1,7 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/iBoX3OSpgYl
- * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
- */
-// import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 
 export default function Component() {
   return (
-    <div className="w-full max-w3xl mt-16 px2 pb8 flex flex-col items-center overflow-x-hidden">
+    <div className="w-full max-w3xl mt-10 px2 pb8 flex flex-col items-center overflow-x-hidden">
       <div className="flex items-center justify-center mb-3">
         <h2 className="text-2xl font-bold">Reviews By Our Custmers</h2>
 

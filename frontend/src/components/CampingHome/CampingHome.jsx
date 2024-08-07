@@ -30,7 +30,7 @@ export default function CampingHome() {
     }, [campings]);
 
     return (
-        <div className='h-full w-full bgprimary/10 mt-10 p-4'>
+        <div className='h-full w-full bgprimary/10 mt-2 p-4'>
             <div className='p-2 flex justify-between  gap-2 '>
                 <div>
                     <h1 className='capitalize text-primary lg:text-3xl text-lg text-nowrap font-bold lg:pb-2'>
