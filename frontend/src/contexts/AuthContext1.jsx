@@ -1,52 +1,36 @@
 // contexts/AuthContext.js
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import {jwtDecode} from 'jwt-decode';
 import axios from 'axios';
-import {jwtDecode} from 'jwt-decode'; // fix import here
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
       try {
         const decodedToken = jwtDecode(token);
-        const userId = decodedToken.userid;
-        // console.log("userId", userId);
+        const userId = decodedToken.id;
 
-        const config = {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        };
-
-        axios.get(`http://localhost:4000/api/users/user-profile`, config)
+        // Fetch user details from the backend
+        axios.get(`/api/users/${userId}`)
           .then(response => {
             setUser(response.data);
-            console.log("response", response);
           })
           .catch(error => {
             console.error('Failed to fetch user data:', error);
-          })
-          .finally(() => {
-            setLoading(false);
           });
       } catch (error) {
         console.error('Failed to decode token:', error);
-        setLoading(false);
       }
-    } else {
-      setLoading(false);
     }
   }, []);
 
-  // console.log("usser", user);
-
   return (
-    <AuthContext.Provider value={{ user, loading }}>
+    <AuthContext.Provider value={{ user }}>
       {children}
     </AuthContext.Provider>
   );

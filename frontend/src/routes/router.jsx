@@ -14,6 +14,7 @@ import UpdateTour from "../components/dashboardGuides/updateTour";
 import EmailConfirmation from "../pages/emailConfermation";
 import { AuthProvider } from "../contexts/AuthContext";
 import LoginModal from "../components/Modals/login";
+import ProtectedRoute from "../contexts/ProtectedRoutes";
 
 const Router = () => {
   return (
@@ -32,7 +33,9 @@ const Router = () => {
         <Route path="/landscapes" element={<Landscapes />} />
 
         {/* Dashboard Routes */}
-        <Route path="/" element={<Dashboard />}>
+        <Route path="/" element={<ProtectedRoute allowedRoles={['guide']}>
+          <Dashboard />
+          </ProtectedRoute>}>
           <Route index path="/dashboard" element={<DashboardGuides />} />
           <Route path="/dashboard/Tours" element={<Tours />} />
           <Route path="CreateTour" element={<CreateTour />} />
