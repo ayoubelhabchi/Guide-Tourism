@@ -9,7 +9,9 @@ const initialState = {
 }
 
 
-export const fetchTours = createAsyncThunk('tours/fetchTours', async ()  => {
+export const fetchTours = createAsyncThunk('tours/fetchTours', async (__,thunkAPI) => {
+  const guideId = thunkAPI.getState().guideInfo?.guideInfo?.guide?.id
+  console.log("state", guideId);
     const token = localStorage.getItem('token') || null;
 
     const config = {
@@ -18,8 +20,7 @@ export const fetchTours = createAsyncThunk('tours/fetchTours', async ()  => {
         },
       };
       console.log(token);
-
-    const response = await axios.get('http://localhost:4000/api/tours/allTours',config)
+    const response = await axios.post(`http://localhost:4000/api/tours/allGuideTours`,{guideId},config)
     return response.data;
 })
 
@@ -90,7 +91,8 @@ const guideSlice = createSlice({
         builder.addCase(fetchTours.fulfilled, (state, action) => {
             state.loading = false;
             state.guideTours = action.payload;
-            console.log("guideTours", state.guideTours);
+            state.tourCount = action.payload.length;
+            // console.log("guideTours", state.guideTours);
             state.error = '';
         });
     

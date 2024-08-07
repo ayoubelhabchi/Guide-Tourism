@@ -1,8 +1,10 @@
 // controllers/tourController.js
-const Tour = require('../models/Tour');
+// const Tour = require('../models/Tour');
 const cloudinary = require('../configs/cloudinary');
 const Guide = require('../models/Guide');
 const mongoose = require('mongoose');
+const Tour = require('../models/Tour');
+
 
 exports.createTour = async (req, res) => {
     try {
@@ -38,14 +40,16 @@ exports.createTour = async (req, res) => {
 
 
 exports.getGuideTours = async (req, res) => {
-    try {
-        if (req.user.role !== 'guide') {
-            return res.status(403).json({ error: 'You must be a guide to retrieve tours' });
-        }
+    const guideId = req.body.guideId
 
-        const tours = await Tour.find({ guide_id: req.user._id });
+    try {
+        // if (req.user.role !== 'guide') {
+        //     return res.status(403).json({ error: 'You must be a guide to retrieve tours' });
+        // }
+
+        const tours = await Tour.find({ guide_id: guideId });
+        console.log("Guide ID:", guideId);
         console.log("tours", tours);
-        console.log("id", req.user._id); 
 
         if (tours.length === 0) {
             return res.status(404).json("No tours found.");

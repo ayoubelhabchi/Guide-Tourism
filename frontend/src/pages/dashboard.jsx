@@ -1,26 +1,20 @@
-import React from 'react'
-import Sidebar from '../components/dashboardGuides/sideBar'
-import TopBar from '../components/dashboardGuides/topBar'
-import {Outlet} from 'react-router-dom'
+import React from 'react';
+import Sidebar from '../components/dashboardGuides/sideBar';
+import { Outlet } from 'react-router-dom';
+import TopBar from '../components/dashboardGuides/topBar';
 
 function Dashboard() {
   return (
-    <>
-   <div>
-    <div className=' '>
-      <div className='relative top-20 '><Sidebar/></div>
-    <div className='relative left-[40px] -top-[700px]'><TopBar/></div>
-    
-     
+    <div className="flex flex-col h-screen overflow-hidden">
+      <TopBar className="w-full" /> {/* TopBar with full width */}
+      <div className="flex flex-1 overflow-hidden">
+        <Sidebar className="" /> {/* Sidebar with fixed width */}
+        <main className="flex-1 px-6 overflow-x-auto overflow-y-hidden pb-4 pt-2 bg-slate-200">
+          <Outlet />
+        </main>
+      </div>
     </div>
-    <div className='relative left-[300px] -top-[650px] h-[100px] w-scren'>{<Outlet/>}</div>
-   </div>
- 
-   
-    
-    </>
-   
-  )
+  );
 }
 
-export default Dashboard
+export default Dashboard;
