@@ -7,7 +7,7 @@ import RegisterModal from "../Modals/register";
 import ForgetPassword from '../Modals/forgetpassword';
 import loginUser from '../../api/loginApi';
 
-const LoginModal = ({ setShowModal }) => {
+const LoginModal = ({ setShowModal, handleCloseModal }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -49,6 +49,7 @@ const LoginModal = ({ setShowModal }) => {
     const handleClickOutside = (e) => {
       if (modalRef.current && !modalRef.current.contains(e.target)) {
         setShowModal(false);
+        handleCloseModal()
       }
     };
 
@@ -148,7 +149,7 @@ const LoginModal = ({ setShowModal }) => {
           )}
         </div>
       </div>
-      <div className="opacity-60 fixed inset-0 z-40 bg-black"></div>
+      <div className="fixed inset-0 z-40 backdrop-blur-sm"></div>
     </>
   );
 };

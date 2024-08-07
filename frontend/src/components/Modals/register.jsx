@@ -232,7 +232,7 @@ const RegisterModal = ({ setShowModal, setShowRegisterModal }) => {
           </div>
         </div>
       </div>
-      <div className="opacity-60 fixed inset-0 z-40 bg-black"></div>
+      <div className=" fixed inset-0 z-40 backdrop-blur-sm"></div>
     </>
   );
 };

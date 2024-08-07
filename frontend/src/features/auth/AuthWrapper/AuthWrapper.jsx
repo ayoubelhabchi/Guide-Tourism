@@ -1,5 +1,5 @@
 // AuthWrapper.js
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {jwtDecode} from 'jwt-decode';
 import axios from 'axios';
@@ -8,9 +8,11 @@ import Layout from '../../../components/layouts/layout';
 import EmailConfirmation from '../../../pages/emailConfermation';
 import ResetPassword from '../../../components/Modals/restPassword';
 import Chat from '../../../components/Chat/Chat';
+import LoginModal from '../../../components/Modals/login';
 
 const AuthWrapper = () => {
   const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -21,12 +23,14 @@ const AuthWrapper = () => {
 
         if (exp < currentTime) {
           logout();
+          setShowModal(true);
         } else {
           axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         }
       } catch (error) {
         console.error('Failed to decode token:', error);
         logout();
+        setShowModal(true);
       }
     }
 
@@ -35,6 +39,7 @@ const AuthWrapper = () => {
       (error) => {
         if (error.response && error.response.status === 401) {
           logout();
+          setShowModal(true);
         }
         return Promise.reject(error);
       }
@@ -48,16 +53,24 @@ const AuthWrapper = () => {
   const logout = () => {
     localStorage.removeItem('token');
     axios.defaults.headers.common['Authorization'] = '';
-    // navigate('/home');
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    navigate('/home');
   };
 
   return (
-    <Routes>
-      <Route path="/email-confirmation" element={<EmailConfirmation />} />
-      <Route path="/chat" element={<Chat />} />
-      <Route path="/rest-password/:token" element={<ResetPassword />} />
-      <Route path="*" element={<Layout />} />
-    </Routes>
+    <>
+      {showModal && <LoginModal handleCloseModal={handleCloseModal} setShowModal={setShowModal} />}
+
+      <Routes>
+        <Route path="/email-confirmation" element={<EmailConfirmation />} />
+        <Route path="/chat" element={<Chat />} />
+        <Route path="/rest-password/:token" element={<ResetPassword />} />
+        <Route path="*" element={<Layout />} />
+      </Routes>
+    </>
   );
 };
 
