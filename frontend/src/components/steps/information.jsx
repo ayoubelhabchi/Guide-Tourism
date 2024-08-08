@@ -77,7 +77,7 @@ const Step1 = ({ nextStep, prevStep }) => {
                             <div className='text-nowrap font-medium capitalize text-lg' id="group-members">{SelectedCampingId.group_member}</div>
                             
                             <label htmlFor="price" className="text-primary font-semibold text-lg">Price</label>
-                            <div className='text-nowrap font-medium capitalize text-lg' id="price">{SelectedCampingId.price}</div>
+                            <div className='text-nowrap font-medium capitalize text-lg' id="price">{SelectedCampingId.price} MAD</div>
                         </div>
                     </div>
                 </div>

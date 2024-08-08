@@ -66,7 +66,6 @@ const AuthWrapper = () => {
 
       <Routes>
         <Route path="/email-confirmation" element={<EmailConfirmation />} />
-        <Route path="/chat" element={<Chat />} />
         <Route path="/rest-password/:token" element={<ResetPassword />} />
         <Route path="*" element={<Layout />} />
       </Routes>
