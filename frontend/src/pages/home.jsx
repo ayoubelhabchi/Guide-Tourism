@@ -48,7 +48,10 @@ import CampingHome from '../components/CampingHome/CampingHome';
     }, []);
     return (
       <>
+
         <Hero />
+        <div className=' lg:mt-24'> 
+
         <About />
         
         <div className="flex flex-col items-center lg:gap-10 gap-4 bg-primary/20 px-12 p-3 lg:p-10 mt-10">
@@ -102,6 +105,7 @@ import CampingHome from '../components/CampingHome/CampingHome';
         <HomeSearch/>
         <CampingHome/>
       <Component />
+        </div>
       </>
     );
   };

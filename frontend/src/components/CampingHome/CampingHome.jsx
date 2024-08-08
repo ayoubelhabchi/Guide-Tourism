@@ -31,12 +31,12 @@ export default function CampingHome() {
 
     return (
         <div className='h-full w-full bgprimary/10 mt-2 p-4'>
-            <div className='p-2 flex justify-between  gap-2 '>
+            <div className='p-2 lg:flex lg:justify-between  gap-2 '>
                 <div>
                     <h1 className='capitalize text-primary lg:text-3xl text-lg text-nowrap font-bold lg:pb-2'>
                         Top 5 Camping Destinations with Family
                     </h1>
-                    <h3 className='lg:text-xl text-sm font-normal lg:font-semibold'>
+                    <h3 className='lg:text-xl text-sm font-normal lg:font-semibold pb-1.5'>
                         Discover our family campings tailored to your family's wishes.
                     </h3>
                 </div>
