@@ -122,7 +122,7 @@ function UserProfile({handleProfileClose, handleGuide}) {
             Become a guide
           </button>
           ) : (
-           <Link to={"/dashboard"}>
+           <Link to={"/dashboard/Tours"}>
                <button  className='bg-primary text-white font-semibold p-1.5 lg:px-6 lg:py-2 rounded-full flex items-center'>
             <AiOutlineDashboard size={20} className='mr-2' />
             Dashboard
