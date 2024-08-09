@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { BiSolidShow, BiSolidHide } from "react-icons/bi";
 import { MdAlternateEmail } from "react-icons/md";
 import { CiLock } from "react-icons/ci";
-import backgroundLoging from "/login.jpg";
+import backgroundLoging from "../../assets/signin.jpg";
 import RegisterModal from "../Modals/register";
 import ForgetPassword from '../Modals/forgetpassword';
 import loginUser from '../../api/loginApi';

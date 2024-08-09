@@ -50,7 +50,7 @@ import CampingHome from '../components/CampingHome/CampingHome';
       <>
 
         <Hero />
-        <div className=' lg:mt-24'> 
+        <div className=' lg:mt-16'> 
 
         <About />
         

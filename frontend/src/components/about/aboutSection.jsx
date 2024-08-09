@@ -22,7 +22,7 @@ const About = () => {
             className=" w-[500px] h-[340px] lg:h-[460px] lg:w-full rounded-3xl"
           />
         </div>
-        <div className="w-full lg:w-2/4 flex flex-col lg: lg:mb-12" data-aos="fade-left">
+        <div className="w-full lg:w-2/4 flex flex-col lg: lg:mb-12" data-aos="fade-up">
           <h2 className="text-2xl lg:text-3xl font-bold text-primary lg:pb-4 ">Information</h2>
           <h3 className="lg:text-4xl text-xl font-semibold pb-1.5">
             What is “Journey Tour & Travel“?

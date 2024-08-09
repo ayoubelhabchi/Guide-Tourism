@@ -88,7 +88,7 @@ const Header = ({ handleProfile }) => {
               <li>
                 <Link
                   to="/home"
-                  className="leading-normal no-underline text-xl  font-medium hover:text-black"
+                  className="leading-normal no-underline text-2xl  font-semibold relative after:content-[''] after:absolute after:w-full after:h-[3px] after:bg-white after:bottom-0 after:left-0 after:scale-x-0 hover:after:scale-x-100 after:origin-bottom-right hover:after:origin-bottom-left after:transition-transform after:duration-300"
                 >
                   Home
                 </Link>
@@ -96,7 +96,7 @@ const Header = ({ handleProfile }) => {
               <li>
                 <Link
                   to="/about"
-                  className="leading-normal no-underline text-xl font-medium hover:text-black"
+                  className="leading-normal no-underline text-2xl  font-semibold relative after:content-[''] after:absolute after:w-full after:h-[3px] after:bg-white after:bottom-0 after:left-0 after:scale-x-0 hover:after:scale-x-100 after:origin-bottom-right hover:after:origin-bottom-left after:transition-transform after:duration-300"
                 >
                   About
                 </Link>
@@ -104,7 +104,7 @@ const Header = ({ handleProfile }) => {
               <li>
                 <Link
                   to="/tour"
-                  className="leading-normal no-underline text-xl font-medium hover:text-black"
+                  className="leading-normal no-underline text-2xl  font-semibold relative after:content-[''] after:absolute after:w-full after:h-[3px] after:bg-white after:bottom-0 after:left-0 after:scale-x-0 hover:after:scale-x-100 after:origin-bottom-right hover:after:origin-bottom-left after:transition-transform after:duration-300"
                 >
                   Tours
                 </Link>
@@ -112,7 +112,7 @@ const Header = ({ handleProfile }) => {
               <li>
                 <Link
                   to="/camping"
-                  className="leading-normal no-underline text-xl font-medium hover:text-black"
+                  className="leading-normal no-underline text-2xl  font-semibold relative after:content-[''] after:absolute after:w-full after:h-[3px] after:bg-white after:bottom-0 after:left-0 after:scale-x-0 hover:after:scale-x-100 after:origin-bottom-right hover:after:origin-bottom-left after:transition-transform after:duration-300"
                 >
                   Campings
                 </Link>

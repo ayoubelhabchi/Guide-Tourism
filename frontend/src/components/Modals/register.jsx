@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { BiSolidShow, BiSolidHide } from "react-icons/bi";
-import backgroundRegister from "/register.avif";
+import backgroundRegister from "../../assets/regitser.jpg";
 import { useNavigate } from 'react-router-dom'; 
 import { IoCheckmarkDoneCircle } from 'react-icons/io5';
 import registerUser from '../../api/registerApi';

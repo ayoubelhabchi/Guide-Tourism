@@ -1,4 +1,4 @@
-import saharaImage from '../assets/sahara-image.png';
+import saharaImage from '../assets/4.jpg';
 import elipse from '../assets/Ellipse 626.png';
 import bgstyle from '../assets/bg style.png';
 import video_sahara from '../assets/sahara.mp4'
@@ -23,7 +23,7 @@ const About = () => {
 
     const backgroundImageStyle = {
         backgroundImage: `url(${saharaImage})`,
-        backgroundSize: 'cover',
+        // backgroundSize: '',
 
     };
     const backgroundImageStyle2 = {
@@ -90,12 +90,11 @@ const About = () => {
 
     return (
         <>
-            <div className="App">
-                <div className="  justify-center flex w-full h-60 lg:h-screen" style={backgroundImageStyle}>
-                    <div className=" flex items-center">
-                        <h1  className=" text-white lg:text-9xl text-5xl font-year ">About us</h1>
-                    </div>
-                </div>
+            <div className="App pb-10">
+            <div className="relative flex justify-center items-center w-full h-60 lg:h-screen">
+  <img src={saharaImage} className="absolute top-0 left-0 h-full w-full object-cover" alt="Sahara Desert" />
+  <h1 className="text-white z-50 lg:text-9xl text-5xl font-year">About us</h1>
+</div>
 
                 <div className=' grid lg:grid-cols-2 p-4 lg:p-8'>
                     <div className=" flex justify-center items-center ">
