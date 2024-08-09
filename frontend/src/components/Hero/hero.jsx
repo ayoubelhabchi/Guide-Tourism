@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { RxDividerVertical } from "react-icons/rx";
-import heroImg from '../../assets/hero1.jpg';
+import heroImg from '../../assets/1.1.jpg';
 
 const Hero = () => {
   const [showInput, setShowInput] = useState(false);
@@ -49,7 +49,7 @@ const Hero = () => {
   return (
     <div className="w-full hscreen relative">
  <div className="relative rounded-2xl lg:bp-32 lg:h-screen hf hscreen">
-  <img src={heroImg} alt="" className="w-full lg:h-[700px] h-full object-cover" />
+  <img src={heroImg} alt="" className="w-full lg:h-[700px] h-full objectcover" />
  <div className="" class="custom-shape-divider-bottom-1723127288">
     <svg className=" rotate-180  absolute lg:-bottom-[150px] -bottom-0.5 w-full" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
         <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill fill-white"></path>

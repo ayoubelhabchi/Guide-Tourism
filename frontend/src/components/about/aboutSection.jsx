@@ -3,7 +3,7 @@ import  { useEffect } from 'react';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import { Link } from 'react-router-dom';
-
+import about from '../../assets/souk5.jpg'
 
 
 
@@ -17,7 +17,7 @@ const About = () => {
       <section className="flex items-center justify-center mb-3 relative gap-6 px-1.5"  >
         <div className="px1" data-aos="fade-right">
           <img
-            src="/img_rectangle_19367.png"
+            src={about}
             alt="Desert"
             className=" w-[500px] h-[340px] lg:h-[460px] lg:w-full rounded-3xl"
           />
