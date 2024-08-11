@@ -15,7 +15,6 @@ export const fetchCampings = createAsyncThunk('campings/fetchCampings', async ()
           Authorization: `Bearer ${token}`,
         },
       };
-      console.log(token);
 
     const response = await axios.get('http://localhost:4000/api/camping/show',config)
     return response.data;
@@ -32,7 +31,7 @@ export const fetchCampingsById = createAsyncThunk('users/fetchCampingsById',asyn
       };
 
       const response = await axios.get(`http://localhost:4000/api/camping/get/${campingId}`,config);
-          console.log("data",response);
+          // console.log("data",response);
       return response.data;
     }
   )
@@ -53,7 +52,7 @@ const campingSlice = createSlice({
         builder.addCase(fetchCampings.fulfilled, (state, action) => {
             state.loading = false;
             state.campings = action.payload;
-            console.log("campings", state.campings);
+            // console.log("campings", state.campings);
             state.error = '';
         });
     

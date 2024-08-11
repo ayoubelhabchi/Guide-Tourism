@@ -40,6 +40,7 @@ const LoginModal = ({ setShowModal, handleCloseModal }) => {
     const result = await loginUser(formData);
     if (result.success) {
       setShowModal(false);
+      window.location.reload();
     } else {
       setError("Invalid email or password");
     }

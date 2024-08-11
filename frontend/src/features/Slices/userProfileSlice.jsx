@@ -16,10 +16,9 @@ export const fetchProfile = createAsyncThunk('users/fetchProfile', async ()  => 
         Authorization: `Bearer ${token}`,
       },
     };
-    console.log(token);
+    // console.log(token);
 
   const response = await axios.get('http://localhost:4000/api/users/user-profile',config)
-  console.log("data",response);
   return response.data
 })
 
@@ -36,7 +35,6 @@ export const updateProfile = createAsyncThunk('users/updateProfile', async (upda
 
   try {
     const response = await axios.put(`http://localhost:4000/api/users/update/${userID}`, updatedFormData, config);
-    console.log("put",response);
 
     return response.data;
   } catch (error) {
@@ -48,7 +46,7 @@ export const updateProfile = createAsyncThunk('users/updateProfile', async (upda
 export const switchProfile = createAsyncThunk('users/switchProfile', async (data, thunkAPI) => {
   const token = localStorage.getItem('token') || null;
   const userID = thunkAPI.getState().users.profile._id;
-console.log("data switch",data);
+  
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,

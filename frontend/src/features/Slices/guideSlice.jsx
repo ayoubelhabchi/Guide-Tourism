@@ -11,7 +11,6 @@ const initialState = {
 
 export const fetchTours = createAsyncThunk('tours/fetchTours', async (__,thunkAPI) => {
   const guideId = thunkAPI.getState().guideInfo?.guideInfo?.guide?.id
-  console.log("state", guideId);
     const token = localStorage.getItem('token') || null;
 
     const config = {
@@ -35,7 +34,6 @@ export const createTours = createAsyncThunk('tours/createTours', async (formData
       console.log(token);
 
     const response = await axios.post('http://localhost:4000/api/tours/create',formData,config)
-    console.log("jjjj",response);
     return response.data;
 })
 
@@ -57,7 +55,6 @@ export const fetchToursById = createAsyncThunk('tours/fetchToursById',async (id)
     }
   )
 export const fetchUpdateTour = createAsyncThunk('tours/fetchUpdateTour',async ({data, id}) => {
-    console.log("Hdhbdhc",id);
 
     const token = localStorage.getItem('token') || null;
 
@@ -68,8 +65,7 @@ export const fetchUpdateTour = createAsyncThunk('tours/fetchUpdateTour',async ({
       };
       try{
           const response = await axios.put(`http://localhost:4000/api/tours/updateTour/${id}`,data,config);
-      console.log("fetchUpdateTour", id);
-      console.log("fetchUpdateTour",response);
+
       return response.data;
       }
 
@@ -106,7 +102,6 @@ const guideSlice = createSlice({
         builder.addCase(fetchToursById.fulfilled, (state, action) => {
             state.loading = false;
             state.getTour = action.payload; 
-            console.log("getTour",state.getTour);
             state.error = '';
             
           });
@@ -116,9 +111,7 @@ const guideSlice = createSlice({
 
         builder.addCase(fetchUpdateTour.fulfilled, (state, action) => {
             state.loading = false;
-            // Update the specific tour in state
             state.getTour = action.payload; 
-            console.log("Updated tour:", state.getTour);
             state.error = '';
         });
 

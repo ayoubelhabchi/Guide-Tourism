@@ -38,7 +38,6 @@ export const fetchCardToursById = createAsyncThunk('tours/fetchCardToursById', a
     //   console.log(tourId);
 
     const response = await axios.get(`http://localhost:4000/api/tours/getTour/${tourId}`,config)
-    console.log("data",response);
     return response.data;
 })
 

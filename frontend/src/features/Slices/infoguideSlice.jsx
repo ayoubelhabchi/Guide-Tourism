@@ -30,7 +30,6 @@ const infoguideSlice = createSlice({
     builder.addCase(fetchGuideInfo.fulfilled, (state, action) => {
       state.loading = false;
       state.guideInfo = action.payload;
-      console.log("guideInfo", action.payload);
       state.error = '';
     });
     builder.addCase(fetchGuideInfo.rejected, (state, action) => {

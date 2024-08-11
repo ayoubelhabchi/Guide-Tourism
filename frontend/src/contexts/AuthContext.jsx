@@ -1,7 +1,7 @@
-// contexts/AuthContext.js
+
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
-import {jwtDecode} from 'jwt-decode'; // fix import here
+import {jwtDecode} from 'jwt-decode';
 
 const AuthContext = createContext();
 
@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }) => {
         axios.get(`http://localhost:4000/api/users/user-profile`, config)
           .then(response => {
             setUser(response.data);
-            console.log("response", response);
+            // console.log("response", response);
           })
           .catch(error => {
             console.error('Failed to fetch user data:', error);

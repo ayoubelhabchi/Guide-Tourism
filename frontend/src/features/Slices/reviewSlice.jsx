@@ -14,10 +14,8 @@ export const LeaveReview = createAsyncThunk('reviews/Review', async ()  => {
           Authorization: `Bearer ${token}`,
         },
       };
-      console.log("Review",token);
   
     const response = await axios.post('http://localhost:4000/api/reviews/feedback',)
-    console.log("review",response);
     return response.data
   })
 
