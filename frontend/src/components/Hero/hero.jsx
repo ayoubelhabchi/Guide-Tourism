@@ -57,7 +57,7 @@ const Hero = () => {
             <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill fill-white"></path>
         </svg>
     </div>
-        <div className="lg:w-4/5 lg:pl-20 p-2 lg:h-screen h-full lg:mt-[0px] absolute lg:top-3/4 md:-bottom-1/2 -bottom-2/4 mt-[-120px]">
+        <div className="lg:w-4/5 lg:pl-20 p-2 lg:h-screen h-full lg:mt-[-60px] absolute lg:top-3/4 md:-bottom-1/2 -bottom-2/4 mb-[-20px]">
           <div className="bg-white/40 backdrop-filter  backdrop-blur-md rounded-md lg:h-20 h-14 lg:w-[700px] w-[340px] flex items-center justify-between lg:p-4 p-1.5">
             <div>
               {showInput ? (
@@ -115,7 +115,7 @@ const Hero = () => {
             </button>
           </div>
           <div className="lg:-top-[210px] -top-[130px] w-[350px] relative lg:w-[700px]">
-            <h1 className="text-white font-bold text-2xl lg:text-5xl">
+            <h1 className="text-white font-bold text-lg md:text-2xl lg:text-5xl">
               No matter where you're going, we'll take you there
             </h1>
           </div>

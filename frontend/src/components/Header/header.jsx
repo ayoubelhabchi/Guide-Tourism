@@ -35,13 +35,12 @@ const Header = ({ handleProfile }) => {
 
     window.addEventListener("scroll", handleScroll);
     
-    // Check scroll position on mount to set initial state correctly
     handleScroll();
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [location.pathname]); // Add location.pathname as a dependency
+  }, [location.pathname]);
 
   useEffect(() => {
     const token = localStorage.getItem("token");

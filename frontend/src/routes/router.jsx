@@ -21,7 +21,7 @@ const Router = () => {
     <AuthProvider>
       <Routes>
         {/* Main Routes */}
-        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/home" element={<Home />} />
         {/* <Route path="/home/login" element={<LoginModal/>} /> */}
         <Route path="/about" element={<About />} />

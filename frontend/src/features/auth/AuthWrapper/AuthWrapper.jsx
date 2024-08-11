@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation, Route, Routes } from 'react-router-dom';
 import {jwtDecode} from 'jwt-decode';
 import axios from 'axios';
-import { Route, Routes } from 'react-router-dom';
 import Layout from '../../../components/layouts/layout';
 import EmailConfirmation from '../../../pages/emailConfermation';
 import ResetPassword from '../../../components/Modals/restPassword';
@@ -11,34 +10,34 @@ import LoginModal from '../../../components/Modals/login';
 
 const AuthWrapper = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
+
     if (token) {
       try {
         const { exp } = jwtDecode(token);
         const currentTime = Date.now() / 1000;
 
         if (exp < currentTime) {
-          logout();
-          setShowModal(true);
+          handleLogoutAndModal();
         } else {
           axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         }
       } catch (error) {
         console.error('Failed to decode token:', error);
-        logout();
-        setShowModal(true);
+        handleLogoutAndModal();
       }
-    }
+    } 
 
     const responseInterceptor = axios.interceptors.response.use(
       (response) => response,
       (error) => {
         if (error.response && error.response.status === 401) {
-          logout();
-          setShowModal(true);
+          handleLogoutAndModal();
         }
         return Promise.reject(error);
       }
@@ -47,7 +46,14 @@ const AuthWrapper = () => {
     return () => {
       axios.interceptors.response.eject(responseInterceptor);
     };
-  }, [navigate]);
+  }, [navigate, location]);
+
+  const handleLogoutAndModal = () => {
+    logout();
+    if (location.pathname !== '/home') {
+      setShowModal(true);
+    }
+  };
 
   const logout = () => {
     localStorage.removeItem('token');
@@ -55,8 +61,11 @@ const AuthWrapper = () => {
   };
 
   const handleCloseModal = () => {
-    setShowModal(false);
-    navigate('/home');
+    if (location.pathname === '/home') {
+      setShowModal(false);
+    } else {
+      navigate('/home');
+    }
   };
 
   return (
