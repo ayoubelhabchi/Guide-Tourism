@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchToursById, fetchUpdateTour } from '../../features/Slices/guideSlice';
+import { TbCloudUpload } from "react-icons/tb";
 
 function UpdateTour() {
   const { id } = useParams();
@@ -13,7 +14,7 @@ function UpdateTour() {
   const dispatch = useDispatch();
   
   useEffect(() => {
-    dispatch(fetchToursById(id)); // Fetch tour data by ID
+    dispatch(fetchToursById(id));
   }, [dispatch, id]);
   
   const handleFileChange = (e) => {
@@ -21,13 +22,11 @@ function UpdateTour() {
     if (file) {
       setFormData({ ...formData, image: file });
       setFileName(file.name);
-      setImagePreview(URL.createObjectURL(file)); // Generate and set the image preview URL
+      setImagePreview(URL.createObjectURL(file));
     }
   };
 
   const tour = useSelector((state) => state.guides.getTour);
-  console.log("Fetched tour data:", tour); // Check if tour data is fetched correctly
-
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -45,20 +44,12 @@ function UpdateTour() {
         category: tour.category || '',
         duration: tour.duration || '',
         price: tour.price || '',
-        image: null // Assuming image is being uploaded and not coming from tour data
+        image: null 
       });
       if (tour.image) {
-        setImagePreview(`${tour.image}`); // Set the image preview URL
+        setImagePreview(`${tour.image}`); 
       }
     }
-    console.log("Form data updated:", {
-      title: tour.title || '',
-      description: tour.description || '',
-      category: tour.category || '',
-      duration: tour.duration || '',
-      price: tour.price || '',
-      image: null
-    });
   }, [tour]);
 
   const handleChange = (e) => {
@@ -81,9 +72,10 @@ function UpdateTour() {
     if (formData.image) data.append('image', formData.image);
   
     try {
-       dispatch(fetchUpdateTour({ id, data }));
-       setIsModalOpen(true);
-      console.log("d",data);
+      await dispatch(fetchUpdateTour({ id, data }));
+      setIsModalOpen(true);
+      // Fetch the updated tour data
+      dispatch(fetchToursById(id));
     } catch (error) {
       console.error('Error updating tour:', error);
     }
@@ -96,113 +88,136 @@ function UpdateTour() {
   const handleBackdropClick = (e) => {
     if (e.target === e.currentTarget) {
       closeModal();
-      closeErrorModal();
     }
   };
+  
   const closeModal = () => {
     setIsModalOpen(false);
   };
 
   return (
-    <div className='bg-slate-200 rounded shadow-lg w-[900px] h-[680px] p-9'>
-      <div className='text-3xl text-primary'>Update tour</div>
-      <form onSubmit={handleSubmit}>
-        <div className='relative flex flex-cols-2'>
-          <div>
-            <p className='py-4'>Title</p>
+    <div className='bg-white w-full rounded-2xl shadow-lg p-3 lg:p-6 overflowhidden overflow-y-auto pr2 max-h-[calc(100vh-90px)]'>
+      <div className='text-3xl font-semibold text-primary mb-2'>Update Tour</div>
+      <hr className='my-4 border-slate-400' />
+
+      <div className=' hscreen'>
+      <form onSubmit={handleSubmit} className='grid lg:grid-cols-2 grid-cols-1 items-center lg:gap-x-8'>
+        <div className='space-y-2'>
+          <div> 
+            <label htmlFor='title' className='block text-sm font-medium text-gray-700 mb-1'>Title</label>
             <input
+              id='title'
               name='title'
               value={formData.title}
-              type="text"
+              type='text'
               onChange={handleChange}
-              className="w-[300px] border-none bg-white"
+              className='w-full border-[1.5px] border-primary rounded-2xl p-2'
             />
-            <p className='py-4'>Description</p>
-            <input
+          </div>
+
+          <div>
+            <label htmlFor='description' className='block text-sm font-medium text-gray-700 mb-1'>Description</label>
+            <textarea
+              id='description'
               name='description'
               value={formData.description}
-              type="text"
+              type='text'
               onChange={handleChange}
-              placeholder='Enter description'
-              className="w-[300px] border-none bg-white"
+              className='w-full border-[1.5px] border-primary rounded-2xl p-2 min-h-[45px] max-h-[100px]'
             />
-            <p className='py-4'>Category</p>
+          </div>
+
+          <div>
+            <label htmlFor='category' className='block text-sm font-medium text-gray-700 mb-1'>Category</label>
             <input
+              id='category'
               name='category'
               value={formData.category}
-              type="text"
+              type='text'
               onChange={handleChange}
-              className="w-[300px] border-none bg-white"
+              className='w-full border-[1.5px] border-primary rounded-2xl p-2'
             />
-            <p className='py-4'>Duration</p>
+          </div>
+
+          <div>
+            <label htmlFor='duration' className='block text-sm font-medium text-gray-700 mb-1'>Duration</label>
             <input
+              id='duration'
               name='duration'
               value={formData.duration}
-              type="text"
+              type='text'
               onChange={handleChange}
-              className="w-[300px] border-none bg-white"
+              className='w-full border-[1.5px] border-primary rounded-2xl p-2'
             />
-            <p className='py-4'>Price</p>
+          </div>
+
+          <div>
+            <label htmlFor='price' className='block text-sm font-medium text-gray-700 mb-1'>Price</label>
             <input
+              id='price'
               name='price'
               value={formData.price}
-              type="text"
+              type='text'
               onChange={handleChange}
-              className="w-[300px] border-none bg-white"
+              className='w-full border-[1.5px] border-primary rounded-2xl p-2'
             />
           </div>
-          <div className="flex flex-col gap-4 items-center justify-center w-full">
-            <div className='text-lg font-bold'>
-              <p>Image</p>
-            </div>
-            <div className='bg-white'>
-              <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-[400px] h-60 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                  <svg className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
-                  </svg>
-                  <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"><span className="font-semibold">Click to upload</span> or drag and drop</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
-                  {fileName && <p className="font-semibold mt-2">{fileName}</p>}
-                </div>
-                <input 
-                  id="dropzone-file" 
-                  type="file" 
-                  className="hidden rounded" 
-                  name='image' 
-                  onChange={handleFileChange} 
-                />
-              </label>
-            </div>
+        </div>
+
+        <div className='flex flex-col items-center wf'>
+          <div className='text-lg font-bold mb-4'>
+          </div>
+          <div className=''>
             {imagePreview && (
-              <div className='mt-4'>
-                <img 
-                  src={imagePreview} 
-                  alt="Preview" 
-                  className='w-96 h-52 rounded object-cover' 
+              <div className='relative'>
+                <img
+                  src={imagePreview}
+                  alt='Preview'
+                  className=' w-full max-h-[300px] rounded-3xl object-cover'
                 />
+                <label
+                  htmlFor='dropzone-file'
+                  className='absolute inset-0 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition-opacity cursor-pointer'
+                >
+                  <TbCloudUpload size={40} className='text-white' />
+                  <h1 className=' text-white text-xl font-semibold capitalize'>Drop to update your image</h1>
+                </label>
               </div>
             )}
+            <input
+              id='dropzone-file'
+              type='file'
+              className='hidden'
+              name='image'
+              onChange={handleFileChange}
+            />
           </div>
         </div>
-        <div className='flex gap-20 relative top-8 left-[200px]'>
-          <Link to="/dashboard/Tours">
-            <button type='button' className='bg-primary rounded w-[150px] h-[40px] text-white'>Dashboard</button>
+
+        <div className='col-span2 flex justify-between mt-4'>
+          <Link to='/dashboard'>
+            <button type='button' className='bg-primary rounded w-36 h-10 text-white'>Dashboard</button>
           </Link>
-          <button type='submit' className='bg-primary rounded w-[150px] h-[40px] text-white'>Update</button>
-          
+          <button type='submit' className='bg-primary rounded w-36 h-10 text-white'>Update</button>
         </div>
       </form>
+      </div>
+
       {isModalOpen && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 bg-black/70 flex items-center justify-center z-50" onClick={handleBackdropClick}>
-          <div className="bg-white rounded-lg shadow-lg p-8 w-[400px]" onClick={(e) => e.stopPropagation()}>
-            <h2 className="text-2xl font-bold mb-4">Success</h2>
-            <p className="mb-4">Tour updeted successfully!</p>
-            <button onClick={closeModal} className="bg-primary rounded w-[90px] h-[40px] text-white">OK</button>
+        <div
+          className='fixed inset-0 backdrop-blur-sm bg-opacity-50 flex items-center justify-center z-50'
+          onClick={handleBackdropClick}
+        >
+          <div
+            className='bg-white rounded-lg shadow-lg p-8 w-96'
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2 className='text-2xl font-bold mb-4'>Success</h2>
+            <p className='mb-4'>Tour updated successfully!</p>
+            <button onClick={closeModal} className='bg-primary rounded w-24 h-10 text-white'>OK</button>
           </div>
         </div>
       )}
-
     </div>
   );
 }

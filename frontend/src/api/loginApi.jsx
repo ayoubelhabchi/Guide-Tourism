@@ -6,7 +6,7 @@ const loginApi = async (formData) => {
   try {
     const response = await axios.post("http://localhost:4000/api/auth/login", formData);
     const token = response.data.token;
-    console.log("token",token);
+    // console.log("token",token);
     localStorage.setItem("token", token);
     return { success: true, token: token };
   } catch (error) {

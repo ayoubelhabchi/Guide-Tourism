@@ -30,20 +30,20 @@ export default function CampingHome() {
     }, [campings]);
 
     return (
-        <div className='h-full w-full bgprimary/10 mt-20 p-4'>
-            <div className='p-2 flex justify-between  gap-2 '>
+        <div className='h-full w-full bgprimary/10 mt-2 p-4'>
+            <div className='p-2 lg:flex lg:justify-between  gap-2 '>
                 <div>
                     <h1 className='capitalize text-primary lg:text-3xl text-lg text-nowrap font-bold lg:pb-2'>
                         Top 5 Camping Destinations with Family
                     </h1>
-                    <h3 className='lg:text-xl text-sm font-normal lg:font-semibold'>
+                    <h3 className='lg:text-xl text-sm font-normal lg:font-semibold pb-1.5'>
                         Discover our family campings tailored to your family's wishes.
                     </h3>
                 </div>
                 <div className='relative flex items-center text-nowrap'>
                     <div className='flex items-center bg-primary/50 lg:p-1 p-1 rounded-xl pr5 text-base font-medium hover:underline hover:bg-white hover:border hover:text-primary '>
                     <Link to={"/camping"}>
-                        <button className='lg:text-lg text-xs flex items-center'>
+                        <button className='lg:text-base font-normal text-xs flex items-center'>
                             Explore more
                             <FaAngleRight className='lg:ml-0.5 lg:text-xl text-sm textblack' />
                         </button>
@@ -54,11 +54,11 @@ export default function CampingHome() {
             </div>
             <div className='grid lg:grid-cols-3 gap-4 h-full  w-full'>
                 {displayedCampings.map((camping, index) => (
-                    <div key={index} className={` w-full  shadow-xl shad bgprimary/20 rounded-3xl ${index === 0 ? 'col-span-2 grid grid-cols-2 rounded-3xl' : 'grid grid-rows-2 overflow-hidden lg:h-[350px] h-[250px] hfull'}`}>
+                    <div key={index} className={` w-full  shadow-xl shad bgprimary/20 bg-white rounded-3xl transition-transform duration-300 ease-in-out hover:scale-105 ${index === 0 ? 'col-span-2 grid grid-cols-2 rounded-3xl' : 'grid grid-rows-2 overflow-hidden lg:h-[350px] h-[250px] hfull'}`}>
                         <img src={camping.image} alt="" className={` w-full object-cover bgcover bg-center ${index === 0 ? "h-full rounded-l-3xl" : " h-full rounded-t-3xl"}`} />
-                        <div className={`p-2 z-50 textwhite font-semibold flex flex-col ${index === 0 ? '' : ''}`}>
-                            <h1 className='z-50 lg:text-3xl lg:pb-2 pb-  textprimary'>{camping.name}</h1>
-                            <h1 className='z-50 lg:text-lg flex items-center lg:gap-2 gap-1 text-primary/100'>
+                        <div className={`p-2 z50 textwhite font-semibold flex flex-col ${index === 0 ? '' : ''}`}>
+                            <h1 className='z50 lg:text-3xl lg:pb-2 pb-  textprimary'>{camping.name}</h1>
+                            <h1 className='z50 lg:text-lg flex items-center lg:gap-2 gap-1 text-primary/100'>
                             <FaLocationDot className='lg:text-lg text-sm'/>
                             {camping.location}
                             </h1>

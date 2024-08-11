@@ -2,12 +2,12 @@ import { useState, useEffect, useRef } from "react";
 import { BiSolidShow, BiSolidHide } from "react-icons/bi";
 import { MdAlternateEmail } from "react-icons/md";
 import { CiLock } from "react-icons/ci";
-import backgroundLoging from "/login.jpg";
+import backgroundLoging from "../../assets/signin.jpg";
 import RegisterModal from "../Modals/register";
 import ForgetPassword from '../Modals/forgetpassword';
 import loginUser from '../../api/loginApi';
 
-const LoginModal = ({ setShowModal }) => {
+const LoginModal = ({ setShowModal, handleCloseModal }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -40,6 +40,7 @@ const LoginModal = ({ setShowModal }) => {
     const result = await loginUser(formData);
     if (result.success) {
       setShowModal(false);
+      window.location.reload();
     } else {
       setError("Invalid email or password");
     }
@@ -49,6 +50,7 @@ const LoginModal = ({ setShowModal }) => {
     const handleClickOutside = (e) => {
       if (modalRef.current && !modalRef.current.contains(e.target)) {
         setShowModal(false);
+        handleCloseModal()
       }
     };
 
@@ -148,7 +150,7 @@ const LoginModal = ({ setShowModal }) => {
           )}
         </div>
       </div>
-      <div className="opacity-60 fixed inset-0 z-40 bg-black"></div>
+      <div className="fixed inset-0 z-40 backdrop-blur-sm"></div>
     </>
   );
 };

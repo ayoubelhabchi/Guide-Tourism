@@ -95,7 +95,7 @@ export default function Orders() {
     };
 
     return (
-        <div className="bg-[#f0f8ff] min-h-screen flex flex-col p-2">
+        <div className="bg-slate-200 min-h-screen flex flex-col p-2">
             <header className="bg-primary rounded-md h-20 flex items-center pl-8 mt-24">
                 <h1 className="text-3xl font-bold text-white">My Orders</h1>
                 <div className="flex items-center gap-4 absolute right-4">
@@ -127,12 +127,12 @@ export default function Orders() {
                                     <td className="font-medium py-3 max-w-24 truncate">{order._id}</td>
                                     <td className="font-medium py-3">{guideIdName[index]?.firstName || "The Admin"}</td>
                                     <td className="font-medium py-3">{order.camping?.location || order.tour?.title}</td>
-                                    <td className="font-medium py-3">{order.amount} MAD</td>
                                     <td className="py-4">
                                         <span className={`px-3 py-1.5 rounded-full font-medium ${order.paymentStatus === 'completed' ? 'bg-green-100 text-green-800' : order.paymentStatus === 'pending' ? 'bg-gray/20 text-black' : 'bg-red-100 text-red-800'}`}>
                                             {order.paymentStatus}
                                         </span>
                                     </td>
+                                    <td className="font-medium py-3">{order.amount} MAD</td>
                                     <td className="py-4">
                                         <div className="flex justify-center">
                                             <button onClick={(e) => { handleOrderId(order.tour?._id, order.camping?._id ); handleModal(e, index); }}>

@@ -37,7 +37,7 @@ export default function HomeSearch() {
 
 
   return (
-    <div className=" bg-primary/20 h-full w-full px-2  mt-10">
+    <div className=" bg-primary/20 h-full w-full px-2  mt-2">
       <div className=" grid grid-cols-2 gap-2">
         <div className="grid grid-cols-3 lg:gap-4 gap-2 hfull ">
           <div className="grid grid-rows- h-full lg:gap-4 gap-2 ">

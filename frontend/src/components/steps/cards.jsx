@@ -5,7 +5,6 @@ import { LiaCampgroundSolid } from "react-icons/lia";
 import { FaPeopleGroup } from "react-icons/fa6";
 import { IoPricetagOutline } from "react-icons/io5";
 import { TfiFaceSad } from "react-icons/tfi";
-import card from '../../assets/agadir.png';
 import campingVideo from '../../assets/campingVideo.mp4';
 import { fetchCampings, fetchCampingsById } from '../../features/Slices/campingSlice';
 import Loading from '../../tools/loadingPage';
@@ -73,9 +72,6 @@ export default function Cards({ nextStep }) {
             <div className="grid grid-cols-2 gap-3 relative">
                 {/* Cards */}
                 {loading ? (
-                    // <div className="flex w-full absolute items-center justify-center ">
-                    //     {/* <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray"></div> */}
-                    // </div>
                     <div className=' w-full absolute'>
 
                         <Loading/>

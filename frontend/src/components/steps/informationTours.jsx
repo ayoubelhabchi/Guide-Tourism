@@ -52,7 +52,7 @@ const Step1 = ({ nextStep }) => {
                             <RiStarSFill size={20} className="text-yellow-300" />
                             <h1 className="text-gray lg:px-4 pl-2 text-sm">(2.3k review)</h1>
                         </div>
-                        <h1 className="text-xl font-bold mt-6 lg:mt-12">About this Tour</h1>
+                        <h1 className="text-xl font-bold mt-6 lg:mt-8">About this Tour</h1>
                         <div>
                             <p className="text-lg lg:w-full w-full border-primary/10 rounded-xl max-h-[730px] overflow-y-auto">
                                 {tour.description}
@@ -73,19 +73,23 @@ const Step1 = ({ nextStep }) => {
                                 <img className="absolute lg:top-[400px] top-[200px] lg:w-[170px] w-[80px] lg:h-[250px] h-[125px] rounded-full overflow-hidden drop-shadow-2xl" src={tour.image} alt="" />
                             </div>
                         </div>
-                    </div>
-                <Link to="/tour">
-                <div className="">
-                    <button
-                            className="bg-gray/30 px-6 h-10 text-white rounded-full hover:bg-white hover:text-gray border"
+                        <Link to="/tour" className=" relative left-2/3 top-1/4">
+                            <button
+                                className="bg-gray/30 px-6 h-10 text-white rounded-full hover:bg-white hover:text-gray border"
                             >
-                            
-                            Back
-                        </button>
-
-                </div>
-                            </Link>
-
+                                Back
+                            </button>
+                        </Link>
+                    </div>
+                    <div className="flex justify-end lg:hidden mb-3">
+                        <Link to="/tour">
+                            <button
+                                className="bg-gray/30 px-6 h-10 text-white rounded-full hover:bg-white hover:text-gray border"
+                            >
+                                Back
+                            </button>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </>

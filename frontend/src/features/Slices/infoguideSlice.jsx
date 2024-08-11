@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const initialState = {
   loading: false,
-  guideInfo: null,
+  guideInfo: [],
   error: '',
 };
 
@@ -17,8 +17,7 @@ export const fetchGuideInfo = createAsyncThunk('guide/fetchGuideInfo', async () 
   };
 
   const response = await axios.get('http://localhost:4000/api/users/user-profile', config);
-  console.log("dataguide", response);
-  return response.data.data; // Adjusted according to your backend response structure
+  return response.data.data;
 });
 
 const infoguideSlice = createSlice({
@@ -31,7 +30,6 @@ const infoguideSlice = createSlice({
     builder.addCase(fetchGuideInfo.fulfilled, (state, action) => {
       state.loading = false;
       state.guideInfo = action.payload;
-      console.log("guideInfo", action.payload);
       state.error = '';
     });
     builder.addCase(fetchGuideInfo.rejected, (state, action) => {
