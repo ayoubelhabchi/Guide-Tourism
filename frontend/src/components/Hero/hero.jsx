@@ -114,7 +114,7 @@ const Hero = () => {
               Submit
             </button>
           </div>
-          <div className="lg:-top-[210px] -top-[130px] w-[350px] relative lg:w-[700px]">
+          <div className="lg:-top-[210px] -top-[115px] w-[350px] relative lg:w-[700px]">
             <h1 className="text-white font-bold text-lg md:text-2xl lg:text-5xl">
               No matter where you're going, we'll take you there
             </h1>
