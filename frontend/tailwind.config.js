@@ -12,7 +12,8 @@ export default {
         primary: "#6499E9",
         secondaire: "#181E4B",
         gray:"#7D7D7D",
-        blue:"#EEF9FF"
+        blue:"#EEF9FF",
+        home: "#fffff0"
       
       },
       fontFamily: {

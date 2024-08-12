@@ -23,7 +23,6 @@ const Router = () => {
         {/* Main Routes */}
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
-        {/* <Route path="/home/login" element={<LoginModal/>} /> */}
         <Route path="/about" element={<About />} />
         <Route path="/tour" element={<Tour />} />
         <Route path="/camping" element={<Camping />} />
