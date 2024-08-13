@@ -65,8 +65,8 @@ const Header = ({ handleProfile }) => {
         <div className="container mx-auto lg:px-3">
           <div className="lg:w-full w-11/12 mx-auto h-full flex justify-between items-center">
             <img
-              src={location.pathname === '/orders' ? "/img_ellipse_621.png" : (isScrolled ? "/blacklogo.png" : "/img_ellipse_621.png")}
-              className="h-28 rounded-[103] object-cover -ml-8"
+              src={location.pathname === '/orders' ? "/logoDark.png" : (isScrolled ? "/logoLight.png" : "/logoDark.png")}
+              className="lg:h-40 h-28 rounded[103] objectcover -ml8"
               alt="Logo"
             />
             {isLoggedIn && ( 
