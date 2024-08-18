@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "node app.js",
+    "dev": "nodemon app.js",
     "test": "jest"
   },
   "keywords": [],
@@ -30,6 +31,7 @@
   "description": "",
   "devDependencies": {
     "jest": "^29.7.0",
+    "nodemon": "^3.1.4",
     "supertest": "^6.3.4"
   }
 }
