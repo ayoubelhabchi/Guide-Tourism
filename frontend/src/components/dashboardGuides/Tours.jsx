@@ -10,6 +10,10 @@ import ConfirmDeleteModal from '../Modals/confirm-Dlete';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import { config } from '../../tools/config/config';
+
+const renderApi = config.Render_Url
+
 function Tours() {
   const dispatch = useDispatch();
   const tours = useSelector((state) => state.guides.guideTours);
@@ -48,7 +52,7 @@ function Tours() {
     };
 
     try {
-      await axios.delete(`http://localhost:4000/api/tours/deleteTour/${tourIdToDelete}`, config);
+      await axios.delete(`${renderApi}/api/tours/deleteTour/${tourIdToDelete}`, config);
       toast.success('Tour deleted successfully');
       dispatch(fetchTours());
       setIsConfirmDeleteModalOpen(false);

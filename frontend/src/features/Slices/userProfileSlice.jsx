@@ -1,6 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+import { config } from '../../tools/config/config';
+
+const renderApi = config.Render_Url
 
 const initialState = {
     loading: false,
@@ -18,7 +21,7 @@ export const fetchProfile = createAsyncThunk('users/fetchProfile', async ()  => 
     };
     // console.log(token);
 
-  const response = await axios.get('http://localhost:4000/api/users/user-profile',config)
+  const response = await axios.get(`${renderApi}/api/users/user-profile`,config)
   return response.data
 })
 
@@ -34,7 +37,7 @@ export const updateProfile = createAsyncThunk('users/updateProfile', async (upda
   };
 
   try {
-    const response = await axios.put(`http://localhost:4000/api/users/update/${userID}`, updatedFormData, config);
+    const response = await axios.put(`${renderApi}/api/users/update/${userID}`, updatedFormData, config);
 
     return response.data;
   } catch (error) {
@@ -54,7 +57,7 @@ export const switchProfile = createAsyncThunk('users/switchProfile', async (data
   };
 
   try {
-    const response = await axios.put(`http://localhost:4000/api/users/switch-profile/${userID}`, data, config);
+    const response = await axios.put(`${renderApi}/api/users/switch-profile/${userID}`, data, config);
     console.log("switch",response);
 
     return response.data;

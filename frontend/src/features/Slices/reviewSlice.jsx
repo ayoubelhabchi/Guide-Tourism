@@ -1,6 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+import { config } from '../../tools/config/config';
+
+const renderApi = config.Render_Url
+
 const initialState = {
     loading: false,
     error: '',
@@ -15,7 +19,7 @@ export const LeaveReview = createAsyncThunk('reviews/Review', async ()  => {
         },
       };
   
-    const response = await axios.post('http://localhost:4000/api/reviews/feedback',)
+    const response = await axios.post(`${renderApi}/api/reviews/feedback`,)
     return response.data
   })
 

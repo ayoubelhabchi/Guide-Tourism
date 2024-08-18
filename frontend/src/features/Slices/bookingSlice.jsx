@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { config } from '../../tools/config/config';
 
+const renderApi = config.Render_Url
 
 const initialState = {
     loading: false,
@@ -21,7 +23,7 @@ export const Booking = createAsyncThunk('bookings/Booking', async ({ tourId,camp
       };
       console.log("booking",token);
   
-    const response = await axios.post('http://localhost:4000/api/booking/book',{
+    const response = await axios.post(`${renderApi}/api/booking/book`,{
       userId,
       tourId,
       campingId,
@@ -41,7 +43,7 @@ export const Booking = createAsyncThunk('bookings/Booking', async ({ tourId,camp
       };
       console.log(token);
   
-    const response = await axios.get('http://localhost:4000/api/users/user-profile',config)
+    const response = await axios.get(`${renderApi}/api/users/user-profile${renderApi}`,config)
     console.log("profile booking",response);
     return response.data
   })

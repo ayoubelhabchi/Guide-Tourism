@@ -1,5 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { config } from '../../tools/config/config';
+
+const renderApi = config.Render_Url
+
 
 const initialState = {
     loading: false,
@@ -7,13 +11,13 @@ const initialState = {
 }
 
 export const forgetPassword = createAsyncThunk('password/forgetPassword', async ({ email }) => {
-    const response = await axios.post('http://localhost:4000/api/auth/password-forget', { email });
+    const response = await axios.post(`${renderApi}/api/auth/password-forget`, { email });
     return response.data;
 })
 
 export const restPassword = createAsyncThunk('password/restPassword', async ({ formData, token }) => {
     console.log("tt",token);
-    const response = await axios.post(`http://localhost:4000/api/auth/rest-password/${token}`, formData);
+    const response = await axios.post(`${renderApi}/api/auth/rest-password/${token}`, formData);
     return response.data;
 })
 

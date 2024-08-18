@@ -1,5 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { config } from '../../tools/config/config';
+
+const renderApi = config.Render_Url
 
 const initialState = {
     loading: false,
@@ -19,7 +22,7 @@ export const fetchTours = createAsyncThunk('tours/fetchTours', async (__,thunkAP
         },
       };
       console.log(token);
-    const response = await axios.post(`http://localhost:4000/api/tours/allGuideTours`,{guideId},config)
+    const response = await axios.post(`${renderApi}/api/tours/allGuideTours`,{guideId},config)
     return response.data;
 })
 
@@ -33,7 +36,7 @@ export const createTours = createAsyncThunk('tours/createTours', async (formData
       };
       console.log(token);
 
-    const response = await axios.post('http://localhost:4000/api/tours/create',formData,config)
+    const response = await axios.post(`${renderApi}/api/tours/create`,formData,config)
     return response.data;
 })
 
@@ -47,7 +50,7 @@ export const fetchToursById = createAsyncThunk('tours/fetchToursById',async (id)
         },
       };
 
-      const response = await axios.get(`http://localhost:4000/api/tours/getTour/${id}`,config);
+      const response = await axios.get(`${renderApi}/api/tours/getTour/${id}`,config);
       console.log("id", id);
       console.log("dataTour",response);
       return response.data;
@@ -64,7 +67,7 @@ export const fetchUpdateTour = createAsyncThunk('tours/fetchUpdateTour',async ({
         },
       };
       try{
-          const response = await axios.put(`http://localhost:4000/api/tours/updateTour/${id}`,data,config);
+          const response = await axios.put(`${renderApi}/api/tours/updateTour/${id}`,data,config);
 
       return response.data;
       }
