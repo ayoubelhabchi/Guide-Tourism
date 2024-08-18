@@ -3,6 +3,10 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import {jwtDecode} from 'jwt-decode';
 
+import { config } from '../tools/config/config';
+
+const renderApi = config.Render_Url
+
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -23,7 +27,7 @@ export const AuthProvider = ({ children }) => {
           },
         };
 
-        axios.get(`http://localhost:4000/api/users/user-profile`, config)
+        axios.get(`${renderApi}/api/users/user-profile`, config)
           .then(response => {
             setUser(response.data);
             // console.log("response", response);

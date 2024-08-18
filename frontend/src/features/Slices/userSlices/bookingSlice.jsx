@@ -1,5 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+
+import { config } from '../../tools/config/config';
+
+const renderApi = config.Render_Url
+
 // const initialState = {
 //     loading: false,
 //     booking: [],
@@ -43,7 +48,7 @@ const handleSubmit = async (e) => {
       };
         
     // try {
-      await axios.post('http://localhost:4000/api/booking/book',formData, config);
+      await axios.post(`${renderApi}/api/booking/book`,formData, config);
     // } catch (error) {
     //   console.error(error);
     // }

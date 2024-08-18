@@ -1,5 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { config } from '../../tools/config/config';
+
+const renderApi = config.Render_Url
 
 
 const initialState = {
@@ -22,7 +25,7 @@ export const fetchCardTours = createAsyncThunk('tours/fetchCardTours', async () 
       };
     //   console.log(token);
 
-    const response = await axios.get('http://localhost:4000/api/tours/allTours',config)
+    const response = await axios.get(`${renderApi}/api/tours/allTours`,config)
     // console.log("data",response);
     return response.data;
 })
@@ -37,7 +40,7 @@ export const fetchCardToursById = createAsyncThunk('tours/fetchCardToursById', a
       };
     //   console.log(tourId);
 
-    const response = await axios.get(`http://localhost:4000/api/tours/getTour/${tourId}`,config)
+    const response = await axios.get(`${renderApi}/api/tours/getTour/${tourId}`,config)
     return response.data;
 })
 
@@ -50,7 +53,7 @@ export const fetchGuidesByIds = createAsyncThunk('tours/fetchGuidesByIds', async
         },
       };
 
-    const response = await axios.post(`http://localhost:4000/api/users/guides-by-ids`,{guideIds})
+    const response = await axios.post(`${renderApi}/api/users/guides-by-ids`,{guideIds})
     // console.log("fetchGuidesByIds",response);
     return response.data;
 })
@@ -66,7 +69,7 @@ export const fetchGuideProfile = createAsyncThunk('tours/fetchGuideProfile', asy
     };
     // console.log(token);
 
-  const response = await axios.get(`http://localhost:4000/api/tours/tour/${guideId}/guide`)
+  const response = await axios.get(`${renderApi}/api/tours/tour/${guideId}/guide`)
 //   console.log("data",response);
   return response.data
 })

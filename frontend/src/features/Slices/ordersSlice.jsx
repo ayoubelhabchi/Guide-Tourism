@@ -1,6 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+import { config } from '../../tools/config/config';
+
+const renderApi = config.Render_Url
 
 const initialState = {
     loading: false,
@@ -18,7 +21,7 @@ export const fetchOrders = createAsyncThunk('orders/fetchOrders', async ()  => {
       };
       // console.log(token);
   
-    const response = await axios.get('http://localhost:4000/api/users/myorders',config)
+    const response = await axios.get(`${renderApi}/api/users/myorders`,config)
     // console.log("ordrs",response);
     return response.data
   })

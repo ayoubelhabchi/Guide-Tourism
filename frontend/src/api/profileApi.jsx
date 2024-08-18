@@ -1,6 +1,10 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:4000/api/users/user-profile';
+import { config } from '../../tools/config/config';
+
+const renderApi = config.Render_Url
+
+const BASE_URL = `${renderApi}/api/users/user-profile`;
 
 const profileApi = {
   getUserProfile: async (token) => {

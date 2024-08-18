@@ -6,9 +6,9 @@ import TopBar from '../components/dashboardGuides/topBar';
 function Dashboard() {
   return (
     <div className="flex flex-col h-screen overflow-hidden">
-      <TopBar className="w-full" /> {/* TopBar with full width */}
+      <TopBar className="w-full" />
       <div className="flex flex-1 overflow-hidden">
-        <Sidebar className="" /> {/* Sidebar with fixed width */}
+        <Sidebar className="" />
         <main className="flex-1 px-6 overflow-x-auto overflow-y-hidden pb-4 pt-2 bg-slate-200">
           <Outlet />
         </main>

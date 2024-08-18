@@ -1,5 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { config } from '../../tools/config/config';
+
+const renderApi = config.Render_Url
+
 const initialState = {
     loading: false,
     campings: [],
@@ -16,7 +20,7 @@ export const fetchCampings = createAsyncThunk('campings/fetchCampings', async ()
         },
       };
 
-    const response = await axios.get('http://localhost:4000/api/camping/show',config)
+    const response = await axios.get(`${renderApi}/api/camping/show`,config)
     return response.data;
 })
 
@@ -30,7 +34,7 @@ export const fetchCampingsById = createAsyncThunk('users/fetchCampingsById',asyn
         },
       };
 
-      const response = await axios.get(`http://localhost:4000/api/camping/get/${campingId}`,config);
+      const response = await axios.get(`${renderApi}/api/camping/get/${campingId}`,config);
           // console.log("data",response);
       return response.data;
     }
