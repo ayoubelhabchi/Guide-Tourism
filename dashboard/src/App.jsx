@@ -10,8 +10,13 @@ import Login from './component/Login';
 import { AuthProvider } from './Auth/AuthContext';
 import PrivateRoute from './Auth/PrivateRouting';
 
+
+import { Provider } from 'react-redux';
+import store from './features/store';
+
 function App() {
   return (
+    <Provider store={store}>
     <AuthProvider>
      <Router>
         <Routes>  {/* Use Routes as a parent component for all Routes */}
@@ -37,6 +42,7 @@ function App() {
         </Routes>
         </Router>
     </AuthProvider>
+    </Provider>
   );
 }
 

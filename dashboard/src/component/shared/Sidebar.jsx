@@ -42,7 +42,7 @@ export default function Sidebar() {
   </div>
   <div className={`rounded-full ml-12 w-[92px] h-[92px] items-center ${!open && "scale-0"}`}>
   <img
-    src={require('../../assets/profile.jpg')}
+    // src={require('../../assets/profile.jpg')}
     alt="Profile"
     className={` rounded-full ml-4 lg:ml-0 ${open ? 'w-[72px]  h-[72px] lg:h-[92px] lg:w-[92px]' : ''}`}
     // lg:w-full lg:h-full
