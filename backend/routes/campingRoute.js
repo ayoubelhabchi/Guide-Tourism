@@ -4,7 +4,7 @@ const CampingController=require("../controllers/CampingController");
 const {authenticateAdmin,isAdmin} = require('../middlewares/adminMiddleware')
 const { authenticateUser } = require("../middlewares/authMiddleware");
 const campingSwagger = require('../swagger/campingSwagger');
-const {uploadCamping} = require ('../middlewares/campingMulter');
+const { uploadCamping } = require ('../middlewares/campingMulter');
 
 
 router.swagger = campingSwagger;
