@@ -124,7 +124,7 @@ export default function Users() {
                   <td className="py-1.5 whitespace-nowrap">{user.group_member}</td>
                   <td className="py-1.5 whitespace-nowrap">{user.isPrivate}</td>
                   <td className="py-1.5 whitespace-nowrap">{user.price}</td>
-                  <td className="py-1.5 whitespace-nowrap">{user.description}</td>
+                  <td className="py-1.5 whitespacenowrap">{user.description}</td>
                   <td className=' pt-2 items-center justify-center'>
                     <button onClick={() => handleDeleteModalOpen(user._id)} className='text-xl text-red-600 pr-2'><MdDeleteForever /></button>
                     <button onClick={() => handleEdit(user._id)} className='text-lg text-blue-600'><MdEditSquare /></button>
