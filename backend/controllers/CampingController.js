@@ -1,5 +1,6 @@
-const fs =  require("fs");
+const cloudinary = require("../configs/cloudinary");
 const Camping = require("../models/Camping");
+const fs = require("fs");
 
 module.exports.createComping = async (req, res) => {
   const {
@@ -12,23 +13,30 @@ module.exports.createComping = async (req, res) => {
     price,
     description,
   } = req.body;
+
   try {
-   
     if (!req.file) {
-      return res.status(400).send({ error: 'Tour image is required' });
-  }
+      return res.status(400).send({ error: "Camping image is required" });
+    }
+
     const existingCamping = await Camping.findOne({ name });
     if (existingCamping) {
-      return res.status(400).json({ error: 'A camping event already exists' });
+      return res.status(400).json({ error: "A camping event already exists" });
     }
-    const imagePath = req.file.path;
+
+    const resultImg = await cloudinary.uploader.upload(req.file.path, {
+      folder: "camping",
+    });
+    console.log(resultImg, "resultImg");
+
+    fs.unlinkSync(req.file.path);
 
     const newCamping = new Camping({
       name,
       location,
       start_date,
       end_date,
-      image: imagePath, 
+      image: resultImg.secure_url,
       group_member,
       isPrivate,
       price,
@@ -38,12 +46,12 @@ module.exports.createComping = async (req, res) => {
     await newCamping.save();
 
     res.status(200).json({
-      message: 'Camping event added successfully',
+      message: "Camping event added successfully",
       data: newCamping.toObject({ getters: true, versionKey: false }),
     });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error("Error while creating camping event:", err);
+    res.status(500).json({ error: "Internal server error" });
   }
 };
 
@@ -60,7 +68,7 @@ module.exports.updateCamping = async (req, res) => {
   try {
     const campingId = req.params.campingId;
     const updates = req.body;
-    const updatedImage = req.file; 
+    const updatedImage = req.file;
     let camping = await Camping.findById(campingId);
     if (!camping) {
       return res.status(404).send({ error: "Camping not found" });
@@ -68,14 +76,16 @@ module.exports.updateCamping = async (req, res) => {
     camping.set(updates);
     if (updatedImage) {
       if (camping.image) {
-        fs.unlinkSync(camping.image); 
+        fs.unlinkSync(camping.image);
       }
-     
+
       camping.image = updatedImage.path;
     }
     const updatedCamping = await camping.save();
 
-    res.status(200).json({ message: "Camping edited successfully", data: updatedCamping });
+    res
+      .status(200)
+      .json({ message: "Camping edited successfully", data: updatedCamping });
   } catch (error) {
     res.status(500).send(error.message);
   }
@@ -83,13 +93,11 @@ module.exports.updateCamping = async (req, res) => {
 module.exports.getCamping = async (req, res) => {
   try {
     const camping = req.params.campingId;
-    const camp = await Camping.findById(camping)
+    const camp = await Camping.findById(camping);
     if (!camp) {
       return res.status(404).send({ error: "Camping not found" });
     }
-    res
-      .status(200)
-      .json(camp);
+    res.status(200).json(camp);
   } catch (error) {
     res.status(500).send(error.message);
   }
