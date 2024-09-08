@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { LiaCampgroundSolid } from "react-icons/lia";
 import { FaPeopleGroup } from "react-icons/fa6";
-import { IoPricetagOutline } from "react-icons/io5";
+import { IoPricetagOutline, IoLocationSharp} from "react-icons/io5";
+
 import { TfiFaceSad } from "react-icons/tfi";
 import campingVideo from '../../assets/campingVideo.mp4';
 import { fetchCampings, fetchCampingsById } from '../../features/Slices/campingSlice';
@@ -27,8 +28,10 @@ export default function Cards({ nextStep }) {
     const filteredCampings = campings.filter(camping =>
         camping.location.toLowerCase().includes(searchTerm.toLowerCase()) &&
         (!searchPrice || (camping.price && camping.price.toString() === searchPrice)) &&
-        (!searchDate || (camping.start_date && new Date(camping.start_date).toISOString().split('T')[0] === searchDate))
+        (!searchDate || (camping.start_date && 
+            new Date(camping.start_date).toLocaleDateString('en-CA') === searchDate))
     );
+    
 
     const sortedCampings = sortByPrice ? [...filteredCampings].sort((a, b) => parseFloat(a.price) - parseFloat(b.price)) : filteredCampings;
 
@@ -93,15 +96,14 @@ export default function Cards({ nextStep }) {
                                     <div className='flex flex-col'>
                                         <div className="flex justify-between font-bold text-white pb-">
                                             <div className=' flex items-center' >
-                                                <LiaCampgroundSolid size={20} className='' />
-                                                <h1 className=' lg:block hidden pl-1'>Location</h1>
+                                                <IoLocationSharp className=' text-xl' />
+                                                <h1 className='lg:text-sm text-[10px] text-wrap leading-tight pl-1'>{camping.location}</h1>
                                             </div>
-                                            <h2 className="capitalize font-semibold">{camping.location}</h2>
                                         </div>
                                         <div className="flex justify-between font-bold text-white pb-">
                                             <div className=' flex items-center'>
-                                                <FaPeopleGroup size={20} className='' />
-                                                <h1 className='lg:block hidden pl-1'>Memebers</h1>
+                                                <FaPeopleGroup className='text-xl' />
+                                                <h1 className='lg:block hidden text-sm  pl-1'>Memebers</h1>
                                             </div>
                                             <h2 className="capitalize font-semibold">{camping.group_member}</h2>
                                         </div>
@@ -152,7 +154,7 @@ export default function Cards({ nextStep }) {
                     </p>
                     <div className="grid grid-cols-1 gap-3 lg:gap-5 pb-4">
                         <input onChange={(e) => setSearchTerm(e.target.value)} value={searchTerm} type="text" placeholder='Search Camping' className="w-full rounded-2xl h-10 text-center border-none bg-white" />
-                        <input onChange={(e) => setSearchDate(e.target.value)} value={searchDate} type="text" placeholder='Date' className="w-full h-10 text-center rounded-2xl border-none bg-white" />
+                        <input onChange={(e) => setSearchDate(e.target.value)} value={searchDate} type="text" placeholder='Date 2024-10-12' className="w-full h-10 text-center rounded-2xl border-none bg-white" />
                         <h2 className="uppercase lg:text-xl text-sm font-bold -mb-3">Filter by price</h2>
                         <div className="relative items-center flex">
                             <input onChange={(e) => setSearchPrice(e.target.value)} value={searchPrice} type="text" placeholder='Enter price range (250-1000 MAD)' className="w-full h-6 lg:h-10 rounded-2xl text-center border-none bg-white pr12" />

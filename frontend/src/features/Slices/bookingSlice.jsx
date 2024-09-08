@@ -43,7 +43,7 @@ export const Booking = createAsyncThunk('bookings/Booking', async ({ tourId,camp
       };
       console.log(token);
   
-    const response = await axios.get(`${renderApi}/api/users/user-profile${renderApi}`,config)
+    const response = await axios.get(`${renderApi}/api/users/user-profile`,config)
     console.log("profile booking",response);
     return response.data
   })
